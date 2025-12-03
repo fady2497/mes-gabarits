@@ -102,6 +102,79 @@ const SearchSuggestions = ({ searchTerm, products, onSelect }) => {
   );
 };
 
+// ============= PANNEAU COMMANDES =============
+const OrdersPanel = ({ showOrders, onClose, orders, loading, error, onRefresh }) => {
+  if (!showOrders) return null;
+  return (
+    <div className="fixed inset-0 z-[60]">
+      <div className="absolute inset-0 bg-black/40" onClick={onClose} />
+      <div className="absolute right-0 top-0 h-full w-full max-w-lg animate-slide-in-right">
+        <div className="h-full bg-gradient-to-b from-white to-gray-50 shadow-2xl border-l-4 border-amber-500">
+          <div className="bg-gradient-to-r from-amber-500 to-orange-500 p-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <Award size={24} className="text-white" />
+                <h2 className="text-2xl font-bold text-white">Mes commandes</h2>
+              </div>
+              <button
+                onClick={onClose}
+                className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              >
+                <X size={24} className="text-white" />
+              </button>
+            </div>
+            <div className="mt-4 flex items-center justify-between text-white/90">
+              <span>{orders?.length || 0} enregistrées</span>
+              <button
+                onClick={onRefresh}
+                className="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl text-sm"
+              >
+                ↻ Actualiser
+              </button>
+            </div>
+          </div>
+
+          <div className="p-6 h-[calc(100%-140px)] overflow-y-auto">
+            {loading && <div className="text-center py-10">Chargement…</div>}
+            {error && <div className="text-center py-10 text-red-600">Erreur: {String(error)}</div>}
+            {!loading && !error && (
+              <div className="space-y-4">
+                {(orders || []).map((o) => (
+                  <div
+                    key={o.id}
+                    className="bg-white rounded-2xl shadow p-4 border border-gray-200"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="font-bold text-gray-900">{o.ref || `#${o.id}`}</div>
+                        <div className="text-sm text-gray-600">
+                          {new Date(o.created_at).toLocaleString()}
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-bold text-amber-600">{o.subtotal}€</div>
+                        <div className="text-sm text-gray-600">{o.total_items} articles</div>
+                      </div>
+                    </div>
+                    <div className="mt-2 text-sm text-gray-700">
+                      Client: {o.client_name} · {o.client_phone}
+                    </div>
+                  </div>
+                ))}
+                {orders?.length === 0 && (
+                  <div className="text-center py-16 bg-white rounded-2xl border border-dashed">
+                    Aucune commande pour le moment
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const AdvancedFilters = ({ filters, onFiltersChange, series }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -651,6 +724,42 @@ const Cart = ({
     window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
   };
 
+  const sendOrderToBackend = async () => {
+    if (!cart || cart.length === 0) {
+      showToast && showToast('Votre panier est vide', 'error');
+      return;
+    }
+    if (!canSend) {
+      showToast && showToast('Veuillez renseigner nom et téléphone valides', 'error');
+      return;
+    }
+    try {
+      const payload = {
+        client: { name: clientName.trim(), phone: clientPhone.trim(), notes: clientNotes },
+        cart,
+        totals: {
+          subtotal: cartTotal.subtotal,
+          pricePerUnit: cartTotal.pricePerUnit,
+          totalItems: cartTotal.totalItems
+        },
+        meta: { ref: `CMD-${Date.now()}` }
+      };
+      const res = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        showToast && showToast('Erreur lors de l’envoi de la commande', 'error');
+        return;
+      }
+      showToast && showToast('Commande envoyée au commerçant');
+    } catch (e) {
+      showToast && showToast('Erreur réseau', 'error');
+    }
+  };
+
   const contactMerchant = () => {
     if (!cart || cart.length === 0) {
       showToast && showToast('Votre panier est vide', 'error');
@@ -775,11 +884,11 @@ const Cart = ({
                 💬 Contacter pour commander
               </button>
               <button
-                onClick={sendOrderByEmail}
+                onClick={sendOrderToBackend}
                 disabled={!canSend}
                 className="w-full bg-white/20 hover:bg-white/30 text-white font-bold py-2 rounded-xl shadow transition-all duration-300 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                ✉️ Email
+                📨 Envoyer au commerçant
               </button>
             </div>
           </div>
@@ -949,11 +1058,11 @@ const Cart = ({
                   💬 Contacter pour commander
                 </button>
                 <button
-                  onClick={sendOrderByEmail}
+                  onClick={sendOrderToBackend}
                   disabled={!canSend}
                   className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold py-3 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 text-base disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  ✉️ Envoyer par e‑mail
+                  📨 Envoyer au commerçant
                 </button>
               </div>
             </div>
@@ -981,6 +1090,10 @@ function App() {
     sizes: [],
     maxPrice: 200
   });
+  const [showOrders, setShowOrders] = useState(false);
+  const [orders, setOrders] = useState([]);
+  const [ordersLoading, setOrdersLoading] = useState(false);
+  const [ordersError, setOrdersError] = useState(null);
 
   const products = useMemo(() => generateProducts(), []);
   const series = useMemo(() => [...new Set(products.map((p) => p.series))], [products]);
@@ -1020,6 +1133,21 @@ function App() {
   const showToast = (message, type = 'success') => {
     setToast({ message, type });
     setTimeout(() => setToast(null), 3000);
+  };
+
+  const loadOrders = async () => {
+    try {
+      setOrdersLoading(true);
+      setOrdersError(null);
+      const res = await fetch('/api/orders');
+      const data = await res.json();
+      if (!res.ok || !data.ok) throw new Error('fetch_failed');
+      setOrders(data.data || []);
+    } catch (e) {
+      setOrdersError(e.message || 'error');
+    } finally {
+      setOrdersLoading(false);
+    }
   };
 
   const filteredProducts = useMemo(() => {
@@ -1164,6 +1292,16 @@ function App() {
                     {cartTotal.totalItems}
                   </span>
                 )}
+              </button>
+
+              <button
+                onClick={() => {
+                  setShowOrders(true);
+                  loadOrders();
+                }}
+                className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-2xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+              >
+                📜 Commandes
               </button>
 
               <button
@@ -1437,6 +1575,14 @@ function App() {
         showCart={showCart}
         onCheckout={handleCheckout}
         showToast={showToast}
+      />
+      <OrdersPanel
+        showOrders={showOrders}
+        onClose={() => setShowOrders(false)}
+        orders={orders}
+        loading={ordersLoading}
+        error={ordersError}
+        onRefresh={loadOrders}
       />
       {/* Footer */}
 
