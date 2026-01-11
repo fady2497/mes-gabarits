@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { homeMotoImage } from '../config';
 
 type Slide = {
   id: string;
@@ -44,18 +45,16 @@ export default function HeroCarousel() {
     <>
       {/* Mobile full-bleed hero */}
       <div className="relative rounded-2xl overflow-hidden border border-[var(--border-soft)] md:hidden h-[62vh]">
-        {s.image && (
-          <img
-            src={s.image}
-            alt={s.title}
-            className="absolute inset-0 w-full h-full object-cover"
-            loading="lazy"
-          />
-        )}
+        <img
+          src={homeMotoImage}
+          alt="Gabarits Moto Premium"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
         <div className="relative h-full px-5 py-6 flex flex-col items-start justify-end gap-3">
-          <div className="text-white text-2xl font-extrabold">{s.title}</div>
-          <div className="text-white/80 text-sm">{s.subtitle}</div>
+          <div className="text-white text-2xl font-extrabold">Gabarits Moto Premium</div>
+          <div className="text-white/80 text-sm">Motifs artisanaux et précision millimétrique</div>
           <Link to="/search?category=moto" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500 text-white text-sm hover:bg-orange-600 transition">
             Voir le catalogue
           </Link>
