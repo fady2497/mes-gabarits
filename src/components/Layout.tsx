@@ -8,6 +8,7 @@ import { Link, Outlet } from 'react-router-dom';
 import FooterSimple from './FooterSimple';
 import CampaignBar from './CampaignBar';
 import { supabase } from '../lib/supabase';
+import { CONTACT } from '../constants/contact';
 
 export default function Layout() {
   const [isAuthed, setIsAuthed] = useState(false);
@@ -45,6 +46,14 @@ export default function Layout() {
               <Link to="/contact" className="text-secondary-700 hover:text-secondary-900">
                 Contact
               </Link>
+              <a
+                href={CONTACT.social.facebook}
+                target="_blank"
+                rel="noreferrer"
+                className="text-secondary-700 hover:text-secondary-900"
+              >
+                Facebook
+              </a>
               {false && (
                 <Link to="/auth/login" className="text-secondary-200 hover:text-white">
                   Se connecter
@@ -107,7 +116,11 @@ export default function Layout() {
             />
             <div className="absolute top-0 right-0 h-full w-72 bg-white border-l border-gray-200 shadow-xl flex flex-col">
               <div className="flex items-center justify-between p-4 border-b">
-                <Link to="/" className="font-extrabold text-lg brand" onClick={() => setMobileOpen(false)}>
+                <Link
+                  to="/"
+                  className="font-extrabold text-lg brand"
+                  onClick={() => setMobileOpen(false)}
+                >
                   Gabarits.fr
                 </Link>
                 <button
@@ -119,18 +132,43 @@ export default function Layout() {
                 </button>
               </div>
               <nav className="flex-1 p-4 space-y-2">
-                <Link to="/" className="block px-3 py-2 rounded-lg hover:bg-gray-100" onClick={() => setMobileOpen(false)}>
+                <Link
+                  to="/"
+                  className="block px-3 py-2 rounded-lg hover:bg-gray-100"
+                  onClick={() => setMobileOpen(false)}
+                >
                   Accueil
                 </Link>
-                <Link to="/search" className="block px-3 py-2 rounded-lg hover:bg-gray-100" onClick={() => setMobileOpen(false)}>
+                <Link
+                  to="/search"
+                  className="block px-3 py-2 rounded-lg hover:bg-gray-100"
+                  onClick={() => setMobileOpen(false)}
+                >
                   Recherche
                 </Link>
-                <Link to="/cart" className="block px-3 py-2 rounded-lg hover:bg-gray-100" onClick={() => setMobileOpen(false)}>
+                <Link
+                  to="/cart"
+                  className="block px-3 py-2 rounded-lg hover:bg-gray-100"
+                  onClick={() => setMobileOpen(false)}
+                >
                   Panier
                 </Link>
-                <Link to="/contact" className="block px-3 py-2 rounded-lg hover:bg-gray-100" onClick={() => setMobileOpen(false)}>
+                <Link
+                  to="/contact"
+                  className="block px-3 py-2 rounded-lg hover:bg-gray-100"
+                  onClick={() => setMobileOpen(false)}
+                >
                   Contact
                 </Link>
+                <a
+                  href={CONTACT.social.facebook}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block px-3 py-2 rounded-lg hover:bg-gray-100"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Facebook
+                </a>
                 <button
                   className="mt-2 w-full flex items-center gap-2 px-3 py-2 rounded-lg bg-amber-50 text-amber-700 hover:bg-amber-100"
                   onClick={() => {
