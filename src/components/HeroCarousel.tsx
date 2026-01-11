@@ -41,59 +41,82 @@ export default function HeroCarousel() {
   }, []);
   const s = slides[idx];
   return (
-    <div className="relative rounded-xl overflow-hidden border border-[var(--border-soft)]">
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div
-          className="p-8 flex flex-col justify-center gap-3"
-          style={{ background: 'linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.35))' }}
-        >
-          <div className="text-3xl lg:text-5xl font-extrabold">{s.title}</div>
-          <div className="text-secondary-700 text-lg">{s.subtitle}</div>
-          {s.cta && (
-            <div className="mt-2">
-              <Link to={s.cta.href} className="btn-primary">
-                {s.cta.label}
-              </Link>
-            </div>
-          )}
-        </div>
-        <div className="bg-[var(--card-bg)] flex items-center justify-center p-6">
-          {s.image ? (
-            <img src={s.image} alt={s.title} className="max-h-72 object-contain" />
-          ) : (
-            <div className="text-secondary-600">Visuel</div>
-          )}
-        </div>
-      </div>
-      <div className="absolute inset-y-0 left-0 flex items-center">
-        <button
-          aria-label="Prev"
-          className="btn-secondary !rounded-full !p-2 ml-3"
-          onClick={() => setIdx((i) => (i - 1 + slides.length) % slides.length)}
-        >
-          ‹
-        </button>
-      </div>
-      <div className="absolute inset-y-0 right-0 flex items-center">
-        <button
-          aria-label="Next"
-          className="btn-secondary !rounded-full !p-2 mr-3"
-          onClick={() => setIdx((i) => (i + 1) % slides.length)}
-        >
-          ›
-        </button>
-      </div>
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
-        {slides.map((slide, i) => (
-          <button
-            key={slide.id}
-            onClick={() => setIdx(i)}
-            className={`h-2 w-2 rounded-full ${
-              i === idx ? 'bg-[var(--accent-gold)]' : 'bg-white/30'
-            }`}
+    <>
+      {/* Mobile full-bleed hero */}
+      <div className="relative rounded-2xl overflow-hidden border border-[var(--border-soft)] md:hidden h-[62vh]">
+        {s.image && (
+          <img
+            src={s.image}
+            alt={s.title}
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
           />
-        ))}
+        )}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
+        <div className="relative h-full px-5 py-6 flex flex-col items-start justify-end gap-3">
+          <div className="text-white text-2xl font-extrabold">{s.title}</div>
+          <div className="text-white/80 text-sm">{s.subtitle}</div>
+          <Link to="/search?category=moto" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500 text-white text-sm hover:bg-orange-600 transition">
+            Voir le catalogue
+          </Link>
+        </div>
       </div>
-    </div>
+
+      {/* Desktop/tablet carousel */}
+      <div className="relative rounded-xl overflow-hidden border border-[var(--border-soft)] hidden md:block">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
+          <div
+            className="p-8 flex flex-col justify-center gap-3"
+            style={{ background: 'linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.35))' }}
+          >
+            <div className="text-3xl lg:text-5xl font-extrabold">{s.title}</div>
+            <div className="text-secondary-700 text-lg">{s.subtitle}</div>
+            {s.cta && (
+              <div className="mt-2">
+                <Link to={s.cta.href} className="btn-primary">
+                  {s.cta.label}
+                </Link>
+              </div>
+            )}
+          </div>
+          <div className="bg-[var(--card-bg)] flex items-center justify-center p-6">
+            {s.image ? (
+              <img src={s.image} alt={s.title} className="max-h-72 object-contain" />
+            ) : (
+              <div className="text-secondary-600">Visuel</div>
+            )}
+          </div>
+        </div>
+        <div className="absolute inset-y-0 left-0 flex items-center">
+          <button
+            aria-label="Prev"
+            className="btn-secondary !rounded-full !p-2 ml-3"
+            onClick={() => setIdx((i) => (i - 1 + slides.length) % slides.length)}
+          >
+            ‹
+          </button>
+        </div>
+        <div className="absolute inset-y-0 right-0 flex items-center">
+          <button
+            aria-label="Next"
+            className="btn-secondary !rounded-full !p-2 mr-3"
+            onClick={() => setIdx((i) => (i + 1) % slides.length)}
+          >
+            ›
+          </button>
+        </div>
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+          {slides.map((slide, i) => (
+            <button
+              key={slide.id}
+              onClick={() => setIdx(i)}
+              className={`h-2 w-2 rounded-full ${
+                i === idx ? 'bg-[var(--accent-gold)]' : 'bg-white/30'
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
