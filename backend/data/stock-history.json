@@ -1,0 +1,38 @@
+[
+  {
+    "id": "A-003",
+    "before": null,
+    "after": {
+      "current": 21,
+      "target": 0
+    },
+    "ts": "2025-12-11T14:33:33.073Z"
+  },
+  {
+    "id": "A-004",
+    "before": null,
+    "after": {
+      "current": 5,
+      "target": 0
+    },
+    "ts": "2025-12-11T14:33:33.073Z"
+  },
+  {
+    "id": "A-005",
+    "before": null,
+    "after": {
+      "current": 5,
+      "target": 0
+    },
+    "ts": "2025-12-11T14:33:33.073Z"
+  },
+  {
+    "id": "B-001",
+    "before": null,
+    "after": {
+      "current": 0,
+      "target": 3
+    },
+    "ts": "2025-12-11T14:33:33.073Z"
+  }
+]

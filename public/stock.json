@@ -1,0 +1,6 @@
+{
+  "A-001": { "current": 12, "target": 20 },
+  "A-002": { "current": 10, "target": 20 },
+  "B-011": { "current": 8, "target": 20 },
+  "C-007": { "current": 15, "target": 20 }
+}

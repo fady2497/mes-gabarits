@@ -1,0 +1,50 @@
+[
+  {
+    "label": "5€",
+    "type": "fixed",
+    "value": 5,
+    "prob": 0.25,
+    "color": "#FDE68A",
+    "icon": "💶"
+  },
+  {
+    "label": "10€",
+    "type": "fixed",
+    "value": 10,
+    "prob": 0.15,
+    "color": "#FCD34D",
+    "icon": "💶"
+  },
+  {
+    "label": "15%",
+    "type": "percent",
+    "value": 15,
+    "prob": 0.1,
+    "color": "#FBBF24",
+    "icon": "💸"
+  },
+  {
+    "label": "Livraison gratuite",
+    "type": "shipping",
+    "value": 0,
+    "prob": 0.1,
+    "color": "#6EE7B7",
+    "icon": "🚚"
+  },
+  {
+    "label": "Gabarit gratuit",
+    "type": "gift",
+    "gift": 1,
+    "prob": 0.05,
+    "color": "#A78BFA",
+    "icon": "🎁"
+  },
+  {
+    "label": "Perdu",
+    "type": "none",
+    "value": 0,
+    "prob": 0.35,
+    "color": "#D1D5DB",
+    "icon": "😢"
+  }
+]

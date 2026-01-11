@@ -9,7 +9,9 @@ const Cart = ({
   onRemoveFromCart,
   onClose,
   showCart,
-  onCheckout
+  onCheckout,
+  onOpenRoulette,
+  rouletteUsed
 }) => {
   if (!showCart) return null;
 
@@ -52,8 +54,14 @@ const Cart = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex justify-end">
-      <div className="bg-white w-full max-w-md h-full overflow-y-auto border-l-2 lg:border-l-4 border-amber-500 shadow-2xl">
+    <div
+      className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex justify-end"
+      onClick={onClose}
+    >
+      <div
+        className="bg-white w-full max-w-md h-full overflow-y-auto border-l-2 lg:border-l-4 border-amber-500 shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="bg-gradient-to-r from-amber-500 to-amber-600 p-4 lg:p-6 flex items-center justify-between shadow-lg">
           <h2 className="text-xl lg:text-2xl font-bold text-white flex items-center">
             <ShoppingCart size={20} className="mr-2 lg:mr-3" />
@@ -185,6 +193,21 @@ const Cart = ({
                       {cartTotal.nextTarget === 10 ? '-10€/pièce' : '85€/pièce'}
                     </p>
                   </div>
+                )}
+                {onOpenRoulette && (
+                  <button
+                    type="button"
+                    onClick={() => onOpenRoulette && onOpenRoulette()}
+                    disabled={rouletteUsed || cartTotal.subtotal < 50}
+                    className={`w-full mb-3 px-4 py-3 rounded-xl lg:rounded-2xl text-base lg:text-xl font-bold shadow-xl transition-colors
+                      ${
+                        rouletteUsed || cartTotal.subtotal < 50
+                          ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                          : 'bg-emerald-500 text-white hover:bg-emerald-600'
+                      }`}
+                  >
+                    {rouletteUsed ? 'Roulette déjà jouée' : '🎉 Tenter ma chance'}
+                  </button>
                 )}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <button

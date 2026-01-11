@@ -10,9 +10,9 @@ const ProductCard = ({
   onView
 }) => (
   <div
-    className={`bg-white rounded-xl lg:rounded-2xl transition-all duration-300 hover:scale-105 ${
+    className={`bg-white rounded-xl lg:rounded-2xl transition-all duration-300 hover:scale-[1.02] ${
       isCarousel
-        ? 'border-2 lg:border-4 border-amber-500 shadow-xl lg:shadow-2xl'
+        ? 'border-2 lg:border-3 border-amber-500 shadow-xl lg:shadow-2xl'
         : 'border border-gray-200 lg:border-2 hover:border-amber-400 shadow-lg lg:shadow-xl hover:shadow-2xl'
     } overflow-hidden group mx-2 lg:mx-0`}
     onClick={() => onView(product)}
@@ -33,7 +33,7 @@ const ProductCard = ({
       }}
       className="absolute top-2 lg:top-4 right-2 lg:right-4 z-10 text-gray-400 hover:text-red-500 transition-colors"
     >
-      <Heart size={20} fill={isFavorite ? 'currentColor' : 'none'} />{' '}
+      <Heart size={10} fill={isFavorite ? 'currentColor' : 'none'} />{' '}
     </button>
     <div className="bg-gradient-to-br from-amber-500 to-amber-600 p-4 lg:p-6 relative overflow-hidden">
       <div className="flex items-center justify-between relative z-10">
@@ -58,9 +58,21 @@ const ProductCard = ({
     </div>
     <div className="p-4 lg:p-6 bg-white">
       <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg lg:rounded-xl h-32 lg:h-48 mb-3 lg:mb-4 border border-gray-200 lg:border-2 flex items-center justify-center overflow-hidden shadow-inner">
-        <div className="text-amber-600 text-xs lg:text-sm font-semibold text-center px-2">
-          Illustration gabarit série {product.series}{' '}
-        </div>{' '}
+        {product.image ? (
+          <img
+            src={product.image}
+            alt={`Série ${product.series} ${product.model}`}
+            className="w-full h-full object-contain select-none"
+            draggable="false"
+            onContextMenu={(e) => e.preventDefault()}
+            onDragStart={(e) => e.preventDefault()}
+            style={{ clipPath: 'inset(3% 3% 3% 3%)' }}
+          />
+        ) : (
+          <div className="text-amber-600 text-xs lg:text-sm font-semibold text-center px-2">
+            Illustration gabarit série {product.series}{' '}
+          </div>
+        )}
       </div>
       <h3 className="text-lg lg:text-xl font-bold text-gray-800 mb-1 lg:mb-2 group-hover:text-amber-600 transition-colors">
         {' '}

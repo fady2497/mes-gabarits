@@ -2,15 +2,208 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --bg-main: #ffffff;
+  --bg-main-gradient: linear-gradient(180deg, #ffffff 0%, #ffffff 60%, #fff7ed 100%);
+  --card-bg: #ffffff;
+  --card-bg-hover: #f8fafc;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --accent-gold: #f59e0b;
+  --accent-gold-hover: #f97316;
+  --border-soft: rgba(0, 0, 0, 0.08);
+
+  --cat-moto: #f59e0b;
+  --cat-auto: #0ea5e9;
+  --cat-maison: #10b981;
+  --cat-nautique: #8b5cf6;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+@layer base {
+  body {
+    background: var(--bg-main-gradient);
+    color: var(--text-primary);
+  }
 }
+
+@layer components {
+  .container-amazon {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .card-amazon {
+    background: var(--card-bg);
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border-soft);
+  }
+  .card-amazon:hover {
+    background: var(--card-bg-hover);
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+  }
+  .btn-primary {
+    background: var(--accent-gold);
+    color: #000;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+  }
+  .btn-primary:hover {
+    background: var(--accent-gold-hover);
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg bg-slate-800 text-white px-3 py-2 font-medium hover:bg-slate-700 transition-colors;
+  }
+  .input-amazon {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 0.5rem 0.75rem;
+  }
+  .input-amazon:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent-gold) 40%, transparent);
+  }
+  .brand {
+    @apply text-orange-500;
+  }
+  .brand:hover {
+    @apply text-orange-600;
+  }
+  .badge-cat {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid var(--border-soft);
+  }
+  .cat-moto {
+    background: color-mix(in oklab, var(--cat-moto) 15%, transparent);
+    color: var(--text-primary);
+  }
+  .cat-auto {
+    background: color-mix(in oklab, var(--cat-auto) 15%, transparent);
+    color: var(--text-primary);
+  }
+  .cat-maison {
+    background: color-mix(in oklab, var(--cat-maison) 15%, transparent);
+    color: var(--text-primary);
+  }
+  .cat-nautique {
+    background: color-mix(in oklab, var(--cat-nautique) 15%, transparent);
+    color: var(--text-primary);
+  }
+}
+
+@layer utilities {
+  .bg-amazon-gray {
+    background: var(--bg-main-gradient);
+  }
+  .text-secondary-900 {
+    color: var(--text-primary);
+  }
+  .text-secondary-700 {
+    color: var(--text-secondary);
+  }
+  .text-secondary-600 {
+    color: var(--text-secondary);
+  }
+  .text-secondary-500 {
+    color: var(--text-muted);
+  }
+  .text-secondary-200 {
+    color: color-mix(in oklab, var(--text-secondary) 65%, white);
+  }
+}
+
+@layer base {
+  body {
+    color: #0f172a;
+    background-image: linear-gradient(180deg, #ffffff 0%, #ffffff 60%, #fff7ed 100%);
+  }
+}
+
+@layer components {
+  .container-amazon {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .card-amazon {
+    @apply rounded-xl border border-gray-200 bg-white shadow-sm;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-orange-500 text-white px-4 py-2 font-medium hover:bg-orange-600 transition-colors;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg bg-slate-800 text-white px-3 py-2 font-medium hover:bg-slate-700 transition-colors;
+  }
+  .input-amazon {
+    @apply rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500;
+  }
+
+  .filters-bar {
+    @apply bg-white rounded-xl border border-gray-200 shadow-sm p-4 lg:p-5 flex flex-wrap items-center gap-3;
+  }
+  .chip {
+    @apply inline-flex items-center px-3 py-1 rounded-lg border border-gray-300 bg-white text-slate-900 text-sm hover:border-gray-400;
+  }
+  .chip-active {
+    @apply bg-orange-500 text-white border-orange-600;
+  }
+}
+
+@layer utilities {
+  .bg-amazon-gray {
+    @apply bg-gray-50;
+  }
+
+  .text-secondary-900 {
+    @apply text-slate-900;
+  }
+  .text-secondary-700 {
+    @apply text-slate-700;
+  }
+  .text-secondary-600 {
+    @apply text-slate-600;
+  }
+  .text-secondary-500 {
+    @apply text-slate-500;
+  }
+  .text-secondary-200 {
+    @apply text-slate-300;
+  }
+}
+
+@layer utilities {
+  .cat-moto,
+  .cat-auto,
+  .cat-maison,
+  .cat-nautique {
+    @apply text-black;
+  }
+}
+
+/* Improve placeholder contrast */
+.input-amazon::placeholder {
+  color: #475569; /* slate-600 */
+}
+
+/* Force icons to black for readability */
+/* default icon colors restored */
+
+/* Range slider for price */
+/* range slider default */

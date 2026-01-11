@@ -1,0 +1,14 @@
+{
+  "banner": {
+    "title": "Le dernier cadeau à ne pas oublier",
+    "subtitle": "Nouveaux motifs et remises d’automne",
+    "ctaLabel": "Voir les offres",
+    "ctaHref": "/search?category=moto"
+  },
+  "slots": [
+    { "title": "Offre de saison", "subtitle": "-20% sur sellerie", "href": "/search?category=auto" },
+    { "title": "Annonce partenaire", "subtitle": "Qualité atelier" },
+    { "title": "Se connecter", "subtitle": "Pour une meilleure expérience", "href": "/auth" },
+    { "title": "Looks d’automne", "subtitle": "Nouveaux motifs" }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "A-001": {
+    "current": 12,
+    "target": 20
+  },
+  "A-002": {
+    "current": 10,
+    "target": 20
+  },
+  "B-011": {
+    "current": 11,
+    "target": 20
+  },
+  "B-012": {
+    "current": 8,
+    "target": 20
+  },
+  "C-007": {
+    "current": 15,
+    "target": 20
+  },
+  "A-003": {
+    "current": 21,
+    "target": 0
+  },
+  "A-004": {
+    "current": 5,
+    "target": 0
+  },
+  "A-005": {
+    "current": 5,
+    "target": 0
+  },
+  "B-001": {
+    "current": 0,
+    "target": 3
+  }
+}

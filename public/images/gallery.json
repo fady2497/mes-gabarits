@@ -1,0 +1,19 @@
+[
+  { "src": "/images/moto1.jpeg", "title": "Sellerie moto", "description": "Vue atelier" },
+  { "src": "/images/moto2.jpeg", "title": "Sellerie moto", "description": "Finition couture" },
+  { "src": "/images/moto3.jpeg", "title": "Sellerie moto", "description": "Motif hexagonal" },
+  { "src": "/images/tmax2.jpeg", "title": "Yamaha TMAX", "description": "Vue dessus" },
+  { "src": "/images/tmax3.jpeg", "title": "Yamaha TMAX", "description": "Détail selle" },
+  { "src": "/images/tmax4.jpeg", "title": "Yamaha TMAX", "description": "Détail sellerie" },
+
+  { "src": "/images/siege1.jpeg", "title": "Selle personnalisée", "description": "Profil" },
+  {
+    "src": "/images/siege2.jpeg",
+    "title": "Selle personnalisée",
+    "description": "Détail surpiqûres"
+  },
+  { "src": "/images/siege3.jpeg", "title": "Selle personnalisée", "description": "Vue complète" },
+  { "src": "/images/siege4.jpeg", "title": "Selle BMW", "description": "Détail matelassé" },
+  { "src": "/images/siege5.jpeg", "title": "Selle GS", "description": "Logo brodé" },
+  { "src": "/images/siege6.jpeg", "title": "Selle atelier", "description": "Finition couture" }
+]

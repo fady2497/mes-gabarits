@@ -3,7 +3,7 @@ export const generateProducts = () => {
   const products = [];
 
   series.forEach((letter) => {
-    const count = letter === 'G' ? 6 : 4;
+    const count = letter === 'B' ? 12 : letter === 'G' ? 6 : 4;
     for (let i = 1; i <= count; i++) {
       const modelNum = String(i).padStart(3, '0');
       let description = '';
@@ -22,7 +22,7 @@ export const generateProducts = () => {
         model: modelNum,
         name: `${letter}-${modelNum}`,
         description,
-        basePrice: 80 + Math.floor(Math.random() * 40),
+        basePrice: 100,
         sizes: ['S', 'M', 'L'],
         rating: (4 + Math.random()).toFixed(1),
         popular: i <= 2
