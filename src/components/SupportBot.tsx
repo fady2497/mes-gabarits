@@ -304,7 +304,8 @@ export default function SupportBot() {
           onTouchMove={(e) => e.stopPropagation()}
           style={{
             overscrollBehavior: 'contain',
-            right: '12px',
+            left: '50%',
+            transform: 'translateX(-50%)',
             bottom: isLandscape
               ? 'calc(env(safe-area-inset-bottom) + 120px)'
               : 'calc(env(safe-area-inset-bottom) + 96px)'
