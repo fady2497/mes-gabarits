@@ -182,6 +182,7 @@ function respondFallback(input: string) {
 
 export default function SupportBot() {
   const [open, setOpen] = useState(false);
+  const [isLandscape, setIsLandscape] = useState(false);
   const [input, setInput] = useState('');
   const [msgs, setMsgs] = useState<ChatMsg[]>(() => {
     const raw = localStorage.getItem('support_bot_msgs');
@@ -277,6 +278,22 @@ export default function SupportBot() {
     window.addEventListener('open-support-bot', handler);
     return () => window.removeEventListener('open-support-bot', handler);
   }, []);
+  useEffect(() => {
+    const update = () => {
+      const mq =
+        typeof window !== 'undefined' &&
+        window.matchMedia &&
+        window.matchMedia('(orientation: landscape)').matches;
+      setIsLandscape(!!mq);
+    };
+    update();
+    window.addEventListener('resize', update);
+    window.addEventListener('orientationchange', update as any);
+    return () => {
+      window.removeEventListener('resize', update);
+      window.removeEventListener('orientationchange', update as any);
+    };
+  }, []);
 
   return (
     <>
@@ -290,7 +307,12 @@ export default function SupportBot() {
         >
           <div
             className="relative"
-            style={{ right: '12px', bottom: 'calc(env(safe-area-inset-bottom) + 96px)' }}
+            style={{
+              right: '12px',
+              bottom: isLandscape
+                ? 'calc(env(safe-area-inset-bottom) + 120px)'
+                : 'calc(env(safe-area-inset-bottom) + 96px)'
+            }}
           />
           <div className="rounded-xl overflow-hidden border border-amber-500/30 bg-black/90 backdrop-blur-xl text-white shadow-2xl">
             <div className="flex items-center justify-between px-4 py-3 border-b border-amber-500/20">
