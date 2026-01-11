@@ -276,7 +276,7 @@ export default function SupportBot() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 rounded-full shadow-lg bg-gradient-to-br from-amber-500 to-amber-600 text-white p-4 hover:scale-[1.03] transition"
+        className="fixed bottom-16 left-1/2 sm:left-auto sm:right-6 transform -translate-x-1/2 sm:translate-x-0 sm:bottom-6 z-40 rounded-full shadow-lg bg-gradient-to-br from-amber-500 to-amber-600 text-white p-4 hover:scale-[1.03] transition"
         aria-label="Ouvrir assistance"
       >
         <MessageCircle className="w-6 h-6" />
@@ -284,7 +284,7 @@ export default function SupportBot() {
 
       {open && (
         <div
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[360px] max-w-[92vw] max-h-[75vh] overflow-y-auto"
+          className="fixed bottom-24 left-1/2 sm:left-auto sm:right-6 transform -translate-x-1/2 sm:translate-x-0 sm:bottom-6 z-50 w-[360px] max-w-[92vw] max-h-[75vh] overflow-y-auto"
           onWheel={(e) => e.stopPropagation()}
           onTouchMove={(e) => e.stopPropagation()}
           style={{ overscrollBehavior: 'contain' }}

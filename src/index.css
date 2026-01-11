@@ -36,6 +36,9 @@
     color: var(--text-primary);
     overflow-x: hidden;
   }
+  html {
+    overflow-x: hidden;
+  }
 }
 
 @layer components {

@@ -8,8 +8,9 @@ export default function FloatingWhatsapp() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 rounded-full shadow-lg bg-gradient-to-br from-green-500 to-green-600 text-white p-4 hover:scale-[1.03] transition"
+      className="fixed bottom-4 left-1/2 sm:left-6 transform -translate-x-1/2 sm:translate-x-0 sm:bottom-6 z-40 rounded-full shadow-lg bg-gradient-to-br from-green-500 to-green-600 text-white p-4 hover:scale-[1.03] transition"
       aria-label="WhatsApp"
+      style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
     >
       <MessageCircle className="w-6 h-6" />
     </a>
