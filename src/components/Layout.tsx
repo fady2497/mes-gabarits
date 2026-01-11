@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Home as HomeIcon, Menu, X, Bot, Facebook as FacebookIcon } from 'lucide-react';
 import SupportBot from './SupportBot';
 import FloatingDock from './FloatingDock';
-import { whatsappUrl, facebookDeepLink } from '../config';
+import { whatsappUrl, facebookDeepLink, openFacebook } from '../config';
 import { Link, Outlet } from 'react-router-dom';
 // ContactBar removed from header; info moved to footer
 import FooterSimple from './FooterSimple';
@@ -47,9 +47,11 @@ export default function Layout() {
                 Contact
               </Link>
               <a
-                href={facebookDeepLink(CONTACT.social.facebook)}
-                target="_blank"
-                rel="noreferrer"
+                href={CONTACT.social.facebook}
+                onClick={(e) => {
+                  e.preventDefault();
+                  openFacebook(CONTACT.social.facebook);
+                }}
                 aria-label="Facebook"
                 className="text-secondary-700 hover:text-secondary-900 inline-flex items-center"
                 title="Facebook"
@@ -163,11 +165,13 @@ export default function Layout() {
                   Contact
                 </Link>
                 <a
-                  href={facebookDeepLink(CONTACT.social.facebook)}
-                  target="_blank"
-                  rel="noreferrer"
+                  href={CONTACT.social.facebook}
                   className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100"
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openFacebook(CONTACT.social.facebook);
+                    setMobileOpen(false);
+                  }}
                   aria-label="Facebook"
                 >
                   <FacebookIcon className="w-4 h-4" />
