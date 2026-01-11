@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Home as HomeIcon } from 'lucide-react';
+import { Home as HomeIcon, Menu, X, Bot } from 'lucide-react';
 import SupportBot from './SupportBot';
 import FloatingDock from './FloatingDock';
 import { whatsappUrl } from '../config';
@@ -11,6 +11,7 @@ import { supabase } from '../lib/supabase';
 
 export default function Layout() {
   const [isAuthed, setIsAuthed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   useEffect(() => {
     (async () => {
       const { data } = await (supabase as any).auth.getSession();
@@ -26,7 +27,8 @@ export default function Layout() {
             <Link to="/" className="font-extrabold text-lg brand">
               Gabarits.fr
             </Link>
-            <nav className="flex items-center gap-4">
+            {/* Navigation desktop */}
+            <nav className="hidden md:flex items-center gap-4">
               <Link
                 to="/"
                 className="flex items-center gap-1 text-secondary-700 hover:text-secondary-900"
@@ -43,7 +45,6 @@ export default function Layout() {
               <Link to="/contact" className="text-secondary-700 hover:text-secondary-900">
                 Contact
               </Link>
-              
               {false && (
                 <Link to="/auth/login" className="text-secondary-200 hover:text-white">
                   Se connecter
@@ -86,8 +87,65 @@ export default function Layout() {
                 </Link>
               )}
             </nav>
+            {/* Bouton burger mobile */}
+            <button
+              className="md:hidden p-2 rounded-lg border border-gray-200 hover:bg-gray-50"
+              aria-label="Menu"
+              onClick={() => setMobileOpen(true)}
+            >
+              <Menu className="w-6 h-6 text-secondary-700" />
+            </button>
           </div>
         </div>
+        {/* Drawer mobile */}
+        {mobileOpen && (
+          <div className="fixed inset-0 z-50 md:hidden">
+            <div
+              className="absolute inset-0 bg-black/40"
+              onClick={() => setMobileOpen(false)}
+              aria-hidden="true"
+            />
+            <div className="absolute top-0 right-0 h-full w-72 bg-white border-l border-gray-200 shadow-xl flex flex-col">
+              <div className="flex items-center justify-between p-4 border-b">
+                <Link to="/" className="font-extrabold text-lg brand" onClick={() => setMobileOpen(false)}>
+                  Gabarits.fr
+                </Link>
+                <button
+                  className="p-2 rounded-lg hover:bg-gray-100"
+                  aria-label="Fermer"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <nav className="flex-1 p-4 space-y-2">
+                <Link to="/" className="block px-3 py-2 rounded-lg hover:bg-gray-100" onClick={() => setMobileOpen(false)}>
+                  Accueil
+                </Link>
+                <Link to="/search" className="block px-3 py-2 rounded-lg hover:bg-gray-100" onClick={() => setMobileOpen(false)}>
+                  Recherche
+                </Link>
+                <Link to="/cart" className="block px-3 py-2 rounded-lg hover:bg-gray-100" onClick={() => setMobileOpen(false)}>
+                  Panier
+                </Link>
+                <Link to="/contact" className="block px-3 py-2 rounded-lg hover:bg-gray-100" onClick={() => setMobileOpen(false)}>
+                  Contact
+                </Link>
+                <button
+                  className="mt-2 w-full flex items-center gap-2 px-3 py-2 rounded-lg bg-amber-50 text-amber-700 hover:bg-amber-100"
+                  onClick={() => {
+                    window.dispatchEvent(new CustomEvent('open-support-bot'));
+                    setMobileOpen(false);
+                  }}
+                >
+                  <Bot className="w-4 h-4" />
+                  Assistance
+                </button>
+              </nav>
+              <div className="p-4 border-t text-xs text-secondary-600">© Gabarits.fr</div>
+            </div>
+          </div>
+        )}
       </header>
       <main>
         <Outlet />
