@@ -41,7 +41,7 @@ export default function FloatingDock() {
   };
   return (
     <div
-      className="fixed z-40"
+      className="fixed z-50"
       style={{
         right: '12px',
         bottom: isLandscape
