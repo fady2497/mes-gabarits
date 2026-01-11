@@ -232,7 +232,7 @@ export const CATALOG: Product[] = (() => {
           : letter === 'M'
           ? 200
           : 100;
-      const image =
+      let image =
         letter === 'A'
           ? imageMapA[model] || null
           : letter === 'B'
@@ -260,6 +260,9 @@ export const CATALOG: Product[] = (() => {
           : letter === 'M'
           ? imageMapM[model] || null
           : null;
+      if (!image && letter === 'B' && model === '011') {
+        image = imageMapB['011'] || '/images/serieB-12.png';
+      }
       const photoNotes =
         letter === 'A'
           ? photoNotesA[model] || null
