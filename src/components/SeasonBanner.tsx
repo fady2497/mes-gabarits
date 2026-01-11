@@ -7,7 +7,7 @@ export default function SeasonBanner({ banner }: { banner?: AdBanner }) {
   return (
     <div className="mb-4">
       <div className="rounded-xl border border-[var(--border-soft)] p-4 lg:p-5" style={{ background: 'linear-gradient(180deg, rgba(201,162,77,.15), rgba(201,162,77,.05))' }}>
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-4 flex-wrap">
           <div>
             <div className="font-extrabold text-xl">{banner.title}</div>
             {banner.subtitle && (
@@ -22,4 +22,3 @@ export default function SeasonBanner({ banner }: { banner?: AdBanner }) {
     </div>
   )
 }
-

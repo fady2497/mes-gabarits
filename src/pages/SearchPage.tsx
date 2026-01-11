@@ -116,8 +116,8 @@ export default function SearchPage() {
 
   return (
     <div className="container-amazon py-8">
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex gap-2">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
+        <div className="flex gap-2 flex-wrap">
           {(legacy ? LEGACY_CATEGORIES : CATEGORIES).map((c) => (
             <button
               key={c.id}
@@ -132,12 +132,12 @@ export default function SearchPage() {
             </button>
           ))}
         </div>
-        <div className="flex items-center gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 w-full md:w-auto">
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Rechercher des gabarits"
-            className="input-amazon w-64"
+            className="input-amazon w-full"
           />
           <button
             className="btn-secondary"
@@ -197,7 +197,7 @@ export default function SearchPage() {
           })}
         </div>
         <div className="mt-3 sm:mt-0 ml-0 sm:ml-auto flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-2 w-full sm:w-auto">
+          <div className="flex items-center gap-2 w-full">
             <span className="text-sm text-black shrink-0">Prix max</span>
             <input
               type="range"
@@ -205,7 +205,7 @@ export default function SearchPage() {
               max={maxPrice}
               value={priceMax}
               onChange={(e) => setPriceMax(parseInt(e.target.value))}
-              className="w-full sm:w-40"
+              className="flex-1 min-w-0"
             />
             <span className="text-sm text-black shrink-0">{priceMax}€</span>
           </div>
