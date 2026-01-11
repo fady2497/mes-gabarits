@@ -11,7 +11,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { CONTACT } from '../constants/contact';
-import { whatsappUrl } from '../config';
+import { whatsappUrl, facebookDeepLink } from '../config';
 import { Link } from 'react-router-dom';
 
 export default function FooterSimple() {
@@ -150,7 +150,7 @@ export default function FooterSimple() {
             <div className="mt-3 text-slate-300 text-sm">Suivez‑nous :</div>
             <div className="mt-2 flex gap-2">
               <a
-                href={CONTACT.social.facebook}
+                href={facebookDeepLink(CONTACT.social.facebook)}
                 target="_blank"
                 rel="noreferrer"
                 className="px-3 py-1 rounded-md bg-slate-700 hover:bg-slate-600 text-slate-200 text-sm flex items-center gap-1"

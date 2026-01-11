@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Home as HomeIcon, Menu, X, Bot } from 'lucide-react';
 import SupportBot from './SupportBot';
 import FloatingDock from './FloatingDock';
-import { whatsappUrl } from '../config';
+import { whatsappUrl, facebookDeepLink } from '../config';
 import { Link, Outlet } from 'react-router-dom';
 // ContactBar removed from header; info moved to footer
 import FooterSimple from './FooterSimple';
@@ -47,7 +47,7 @@ export default function Layout() {
                 Contact
               </Link>
               <a
-                href={CONTACT.social.facebook}
+                href={facebookDeepLink(CONTACT.social.facebook)}
                 target="_blank"
                 rel="noreferrer"
                 className="text-secondary-700 hover:text-secondary-900"
@@ -161,7 +161,7 @@ export default function Layout() {
                   Contact
                 </Link>
                 <a
-                  href={CONTACT.social.facebook}
+                  href={facebookDeepLink(CONTACT.social.facebook)}
                   target="_blank"
                   rel="noreferrer"
                   className="block px-3 py-2 rounded-lg hover:bg-gray-100"
