@@ -10,14 +10,14 @@ export default function CampaignBar() {
   const b = ads.banner;
   if (!b) return null;
   return (
-    <div className="bg-[color-mix(in oklab,var(--accent-gold) 20%, transparent)] text-secondary-900">
+    <div className="hidden md:block bg-[color-mix(in oklab,var(--accent-gold) 18%, transparent)] text-secondary-900">
       <div className="container-amazon py-2 flex items-center justify-between">
-        <div className="font-semibold">
+        <div className="font-medium">
           {b.title}
           {b.subtitle ? ' — ' + b.subtitle : ''}
         </div>
         {b.ctaHref && b.ctaLabel && (
-          <Link to={b.ctaHref} className="btn-primary">
+          <Link to={b.ctaHref} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500 text-white text-sm hover:bg-orange-600 transition">
             {b.ctaLabel}
           </Link>
         )}
