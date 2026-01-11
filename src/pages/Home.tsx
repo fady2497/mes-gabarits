@@ -7,6 +7,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { fetchAds, type AdsResponse } from '../services/adService';
 import { Bike, ArrowRight, Sparkles } from 'lucide-react';
 import { homeMotoImage, homeMotoLink } from '../config';
+import { CATALOG } from '../data/catalog';
 
 export default function Home() {
   const categories = [
@@ -28,6 +29,48 @@ export default function Home() {
       <div className="container-amazon py-6">
         <SeasonBanner banner={ads.banner} />
         <HeroCarousel />
+        {/* À propos */}
+        <div className="mt-6">
+          <div className="rounded-2xl border border-[var(--border-soft)] bg-white p-4 sm:p-5">
+            <div className="font-extrabold text-lg sm:text-xl mb-1">Gabarits.fr — atelier de motifs</div>
+            <div className="text-secondary-700 text-sm">
+              Nous créons des gabarits de couture premium pour sellerie moto et auto: hexagone, chevron,
+              curve/wave, line sport, spider… Chaque motif est pensé pour une pose régulière et un rendu
+              propre, avec plusieurs pas (30/40/50/70 mm) selon la taille de la selle. Expédition rapide,
+              sur‑mesure possible sur demande.
+            </div>
+          </div>
+        </div>
+        {/* Produits populaires */}
+        <div className="mt-6">
+          <div className="flex items-center justify-between mb-3">
+            <div className="font-extrabold text-lg sm:text-xl">Produits populaires</div>
+            <Link to="/search" className="text-primary-600 hover:text-primary-700 text-sm">
+              Voir tous les produits
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {CATALOG.filter((p) => p.popular).slice(0, 8).map((p) => (
+              <Link
+                key={p.id}
+                to={`/product/${p.id}?category=moto`}
+                className="rounded-amazon border border-[var(--border-soft)] bg-white overflow-hidden hover:shadow-lg transition"
+              >
+                <div className="aspect-square bg-white flex items-center justify-center">
+                  {p.image ? (
+                    <img src={p.image} alt={p.name} className="w-full h-full object-contain" loading="lazy" />
+                  ) : (
+                    <div className="text-secondary-600 text-sm">Image à venir</div>
+                  )}
+                </div>
+                <div className="p-3">
+                  <div className="font-medium text-secondary-900 text-sm">{p.name}</div>
+                  <div className="text-primary-700 text-sm">{p.basePrice}€</div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
         <div className="grid grid-cols-1 gap-6 mt-6">
           <div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
