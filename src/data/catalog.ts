@@ -42,7 +42,7 @@ const imageMapB: Record<string, string> = {
   '008': '/images/gabarit-sellerie-serie-b8-classic-chevron-70mm-gabaritsfr.png',
   '009': '/images/gabarit-sellerie-serie-b9-classic-chevron-30mm-gabaritsfr.png',
   '010': '/images/gabarit-sellerie-serie-b10-classic-chevron-40mm-gabaritsfr.png',
-  '011': '/images/gabarit-sellerie-serie-b11-classic-chevron-50mm-gabaritsfr.png'
+  '011': '/images/gabarit-sellerie-serie-b12-classic-chevron-70mm-gabaritsfr.png'
 };
 const imageMapC: Record<string, string> = {
   '001': '/images/gabarit-sellerie-serie-c1-classic-curve-30mm-gabaritsfr.png',
