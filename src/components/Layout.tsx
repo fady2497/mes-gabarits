@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Home as HomeIcon } from 'lucide-react';
 import SupportBot from './SupportBot';
-import FloatingWhatsapp from './FloatingWhatsapp';
+import FloatingDock from './FloatingDock';
 import { whatsappUrl } from '../config';
 import { Link, Outlet } from 'react-router-dom';
 // ContactBar removed from header; info moved to footer
@@ -101,7 +101,7 @@ export default function Layout() {
       </main>
       <FooterSimple />
       <SupportBot />
-      <FloatingWhatsapp />
+      <FloatingDock />
     </div>
   );
 }
