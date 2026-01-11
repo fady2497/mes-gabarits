@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Home as HomeIcon, Menu, X, Bot } from 'lucide-react';
+import { Home as HomeIcon, Menu, X, Bot, Facebook as FacebookIcon } from 'lucide-react';
 import SupportBot from './SupportBot';
 import FloatingDock from './FloatingDock';
 import { whatsappUrl, facebookDeepLink } from '../config';
@@ -50,9 +50,11 @@ export default function Layout() {
                 href={facebookDeepLink(CONTACT.social.facebook)}
                 target="_blank"
                 rel="noreferrer"
-                className="text-secondary-700 hover:text-secondary-900"
+                aria-label="Facebook"
+                className="text-secondary-700 hover:text-secondary-900 inline-flex items-center"
+                title="Facebook"
               >
-                Facebook
+                <FacebookIcon className="w-5 h-5" />
               </a>
               {false && (
                 <Link to="/auth/login" className="text-secondary-200 hover:text-white">
@@ -164,10 +166,12 @@ export default function Layout() {
                   href={facebookDeepLink(CONTACT.social.facebook)}
                   target="_blank"
                   rel="noreferrer"
-                  className="block px-3 py-2 rounded-lg hover:bg-gray-100"
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100"
                   onClick={() => setMobileOpen(false)}
+                  aria-label="Facebook"
                 >
-                  Facebook
+                  <FacebookIcon className="w-4 h-4" />
+                  <span>Facebook</span>
                 </a>
                 <button
                   className="mt-2 w-full flex items-center gap-2 px-3 py-2 rounded-lg bg-amber-50 text-amber-700 hover:bg-amber-100"
