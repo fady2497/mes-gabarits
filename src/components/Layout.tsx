@@ -43,14 +43,7 @@ export default function Layout() {
               <Link to="/contact" className="text-secondary-700 hover:text-secondary-900">
                 Contact
               </Link>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-secondary-700 hover:text-secondary-900"
-              >
-                WhatsApp
-              </a>
+              
               {false && (
                 <Link to="/auth/login" className="text-secondary-200 hover:text-white">
                   Se connecter

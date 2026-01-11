@@ -1,6 +1,5 @@
 import React from 'react'
-import { MessageCircle, Bot } from 'lucide-react'
-import { whatsappUrl } from '../config'
+import { Bot } from 'lucide-react'
 
 export default function FloatingDock() {
   const openBot = () => {
@@ -19,15 +18,6 @@ export default function FloatingDock() {
         >
           <Bot className="w-5 h-5" />
         </button>
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="WhatsApp"
-          className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 text-white flex items-center justify-center hover:scale-105 transition"
-        >
-          <MessageCircle className="w-5 h-5" />
-        </a>
       </div>
     </div>
   )
