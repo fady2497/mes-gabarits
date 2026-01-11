@@ -409,26 +409,26 @@ const ProductPage: React.FC = () => {
               {/* Dimensions personnalisées */}
               <div className="card-amazon p-4 mt-4">
                 <div className="text-secondary-900 font-medium mb-2">Dimensions personnalisées</div>
-                <div className="flex items-center gap-3">
-                  <div className="flex flex-col">
+                <div className="flex flex-wrap items-center gap-3">
+                  <div className="flex flex-col w-full sm:w-auto">
                     <span className="text-xs text-secondary-500">Largeur (mm)</span>
                     <input
                       type="number"
                       value={customWidth}
                       onChange={(e) => setCustomWidth(parseInt(e.target.value || '260'))}
-                      className="input-amazon w-24"
+                      className="input-amazon w-full sm:w-24"
                     />
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col w-full sm:w-auto">
                     <span className="text-xs text-secondary-500">Hauteur (mm)</span>
                     <input
                       type="number"
                       value={customHeight}
                       onChange={(e) => setCustomHeight(parseInt(e.target.value || '180'))}
-                      className="input-amazon w-24"
+                      className="input-amazon w-full sm:w-24"
                     />
                   </div>
-                  <button className="btn-secondary" onClick={openInCreator}>
+                  <button className="btn-secondary w-full sm:w-auto" onClick={openInCreator}>
                     Voir dans Catalogue
                   </button>
                 </div>

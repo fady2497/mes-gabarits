@@ -43,16 +43,18 @@ export default function Home() {
                     className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
-                  <div className="relative p-5 flex items-center justify-between">
-                    <div className="flex items-center gap-7">
-                      <div className="w-36 h-36 rounded-full bg-amber-500/25 text-amber-100 flex items-center justify-center ring-2 ring-amber-500/60 shadow-xl">
-                        <Bike className="w-20 h-20" />
+                  <div className="relative p-4 md:p-5 flex items-center justify-between">
+                    <div className="flex items-center gap-4 md:gap-7">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-36 lg:h-36 rounded-full bg-amber-500/25 text-amber-100 flex items-center justify-center ring-2 ring-amber-500/60 shadow-xl">
+                        <Bike className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20" />
                       </div>
                       <div>
-                        <div className="font-bold text-2xl md:text-3xl text-white group-hover:text-amber-300 transition-colors">
+                        <div className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl text-white group-hover:text-amber-300 transition-colors">
                           {c.name}
                         </div>
-                        <div className="text-base md:text-lg text-amber-100/90">{c.desc}</div>
+                        <div className="text-xs sm:text-sm md:text-base text-amber-100/90">
+                          {c.desc}
+                        </div>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
@@ -60,7 +62,7 @@ export default function Home() {
                         <Sparkles className="w-3 h-3" />
                         Nouveaux motifs
                       </span>
-                      <span className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm">
+                      <span className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs sm:text-sm">
                         Voir le catalogue
                         <ArrowRight className="w-4 h-4" />
                       </span>

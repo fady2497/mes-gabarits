@@ -171,7 +171,7 @@ const CartPage: React.FC = () => {
                           </h3>
                           <p className="text-secondary-600 text-sm mb-3">Vendu par TechStore</p>
 
-                          <div className="flex items-center space-x-4">
+                          <div className="flex flex-wrap items-center gap-3">
                             {/* Contrôle quantité */}
                             <div className="flex items-center border border-gray-300 rounded-amazon">
                               <button
@@ -210,7 +210,7 @@ const CartPage: React.FC = () => {
                           </div>
                         </div>
 
-                        <div className="text-right">
+                        <div className="text-right mt-3 sm:mt-0">
                           <div className="text-xl font-bold text-secondary-900">
                             {(item.price * item.quantity).toFixed(2)}€
                           </div>

@@ -180,55 +180,58 @@ export default function SearchPage() {
 
       {/* Filtres séries */}
       <div className="filters-bar mb-4">
-        {SERIES_CHIPS.map((s) => {
-          const active = selectedSeries.includes(s);
-          return (
-            <button
-              key={s}
-              onClick={() =>
-                setSelectedSeries((prev) => (active ? prev.filter((x) => x !== s) : [...prev, s]))
-              }
-              className={`chip ${active ? 'chip-active' : ''}`}
-            >
-              Série {s}
-            </button>
-          );
-        })}
-        <div className="ml-auto flex items-center gap-3">
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-black">Prix max</span>
+        <div className="flex flex-wrap items-center gap-2">
+          {SERIES_CHIPS.map((s) => {
+            const active = selectedSeries.includes(s);
+            return (
+              <button
+                key={s}
+                onClick={() =>
+                  setSelectedSeries((prev) => (active ? prev.filter((x) => x !== s) : [...prev, s]))
+                }
+                className={`chip ${active ? 'chip-active' : ''}`}
+              >
+                Série {s}
+              </button>
+            );
+          })}
+        </div>
+        <div className="mt-3 sm:mt-0 ml-0 sm:ml-auto flex flex-wrap items-center gap-3">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <span className="text-sm text-black shrink-0">Prix max</span>
             <input
               type="range"
               min={0}
               max={maxPrice}
               value={priceMax}
               onChange={(e) => setPriceMax(parseInt(e.target.value))}
+              className="w-full sm:w-40"
             />
-            <span className="text-sm text-black">{priceMax}€</span>
+            <span className="text-sm text-black shrink-0">{priceMax}€</span>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-black">Taille (mm) min</span>
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <span className="text-sm text-black shrink-0">Taille (mm) min</span>
             <input
               type="number"
-              className="input-amazon w-24 text-black"
+              className="input-amazon w-full sm:w-24 text-black"
               value={minCote}
               onChange={(e) => setMinCote(parseInt(e.target.value || '0'))}
               placeholder="ex: 40"
               title="Filtre sur la cote (mm) quand disponible"
             />
           </div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-black">Taille (mm) max</span>
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <span className="text-sm text-black shrink-0">Taille (mm) max</span>
             <input
               type="number"
-              className="input-amazon w-24 text-black"
+              className="input-amazon w-full sm:w-24 text-black"
               value={maxCote}
               onChange={(e) => setMaxCote(parseInt(e.target.value || '0'))}
               placeholder="ex: 70"
               title="Filtre sur la cote (mm) quand disponible"
             />
           </div>
-          <label className="flex items-center gap-2 text-sm text-black">
+          <label className="flex items-center gap-2 text-sm text-black w-full sm:w-auto">
             <input
               type="checkbox"
               checked={popularOnly}
@@ -239,7 +242,7 @@ export default function SearchPage() {
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value as any)}
-            className="input-amazon w-56"
+            className="input-amazon w-full sm:w-56"
           >
             <option value="series_asc">Tri: Série A→M</option>
             <option value="price_asc">Prix ↑</option>
