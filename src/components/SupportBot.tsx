@@ -282,12 +282,19 @@ export default function SupportBot() {
     <>
       {open && (
         <div
-          className="fixed bottom-24 left-1/2 sm:left-auto sm:right-6 transform -translate-x-1/2 sm:translate-x-0 sm:bottom-6 z-50 w-[360px] max-w-[92vw] max-h-[75vh] overflow-y-auto"
+          className="fixed z-50 w-[360px] max-w-[92vw] max-h-[75vh] overflow-y-auto"
           onWheel={(e) => e.stopPropagation()}
           onTouchMove={(e) => e.stopPropagation()}
           style={{ overscrollBehavior: 'contain' }}
           ref={containerRef}
         >
+          <div
+            className="relative"
+            style={{
+              right: 'calc(-50vw + 1rem)',
+              bottom: 'calc(env(safe-area-inset-bottom) + 120px)'
+            }}
+          />
           <div className="rounded-xl overflow-hidden border border-amber-500/30 bg-black/90 backdrop-blur-xl text-white shadow-2xl">
             <div className="flex items-center justify-between px-4 py-3 border-b border-amber-500/20">
               <div className="font-semibold">Assistance Gabarits.fr</div>
