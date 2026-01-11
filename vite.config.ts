@@ -45,7 +45,7 @@ export default defineConfig({
                 temperature: 0.4
               })
             });
-            const data = await rsp.json();
+            const data: any = await rsp.json();
             const reply =
               data?.choices?.[0]?.message?.content || 'Désolé, je n’ai pas pu répondre.';
             res.statusCode = 200;

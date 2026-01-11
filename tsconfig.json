@@ -24,5 +24,6 @@
     }
   },
   "include": ["src"],
-  "exclude": ["api", "src/stores/**"]
+  "exclude": ["api", "src/stores/**"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

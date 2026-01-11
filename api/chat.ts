@@ -39,7 +39,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         temperature: 0.4
       })
     });
-    const data = await rsp.json();
+    const data: any = await rsp.json();
     const reply = data?.choices?.[0]?.message?.content || 'Désolé, je n’ai pas pu répondre.';
     res.status(200).json({ reply });
   } catch (e) {
