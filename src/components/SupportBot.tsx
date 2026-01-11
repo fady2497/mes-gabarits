@@ -290,10 +290,7 @@ export default function SupportBot() {
         >
           <div
             className="relative"
-            style={{
-              right: 'calc(-50vw + 1rem)',
-              bottom: 'calc(env(safe-area-inset-bottom) + 120px)'
-            }}
+            style={{ right: '12px', bottom: 'calc(env(safe-area-inset-bottom) + 96px)' }}
           />
           <div className="rounded-xl overflow-hidden border border-amber-500/30 bg-black/90 backdrop-blur-xl text-white shadow-2xl">
             <div className="flex items-center justify-between px-4 py-3 border-b border-amber-500/20">

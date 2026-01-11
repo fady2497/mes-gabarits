@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from 'react'
-import { Bot } from 'lucide-react'
+import React, { useEffect, useState } from 'react';
+import { Bot } from 'lucide-react';
 
 export default function FloatingDock() {
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(true);
   useEffect(() => {
-    let lastY = window.scrollY
+    let lastY = window.scrollY;
+    const showAfter = 300;
     const onScroll = () => {
-      const y = window.scrollY
-      const down = y > lastY + 5
-      const up = y < lastY - 5
-      if (down) setVisible(false)
-      else if (up || y < 24) setVisible(true)
-      lastY = y
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+      const y = window.scrollY;
+      const down = y > lastY + 6;
+      const up = y < lastY - 6;
+      if (y < showAfter) setVisible(false);
+      else if (down) setVisible(false);
+      else if (up) setVisible(true);
+      lastY = y;
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
   const openBot = () => {
-    window.dispatchEvent(new CustomEvent('open-support-bot'))
-  }
+    window.dispatchEvent(new CustomEvent('open-support-bot'));
+  };
   return (
     <div
       className="fixed z-40"
-      style={{
-        right: '1rem',
-        bottom: 'calc(env(safe-area-inset-bottom) + 64px)'
-      }}
+      style={{ right: '12px', bottom: 'calc(env(safe-area-inset-bottom) + 16px)' }}
     >
       <div
         className={`rounded-full bg-black/60 backdrop-blur-md border border-white/10 shadow-lg px-2 py-2 flex items-center gap-2 transition-all duration-200 ${
@@ -41,5 +41,5 @@ export default function FloatingDock() {
         </button>
       </div>
     </div>
-  )
+  );
 }
