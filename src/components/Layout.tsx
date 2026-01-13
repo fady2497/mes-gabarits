@@ -45,6 +45,9 @@ export default function Layout() {
               <Link to="/cart" className="relative text-secondary-700 hover:text-secondary-900">
                 Panier
                 {totalItems > 0 && (
+                  <span className="ml-1 font-semibold text-primary-700">({totalItems})</span>
+                )}
+                {totalItems > 0 && (
                   <span
                     className="ml-2 inline-flex items-center justify-center px-2 min-w-[20px] h-5 rounded-full bg-primary-600 text-white text-xs"
                     aria-live="polite"
@@ -167,6 +170,9 @@ export default function Layout() {
                 >
                   <span className="inline-flex items-center gap-2">
                     <span>Panier</span>
+                    {totalItems > 0 && (
+                      <span className="font-semibold text-primary-700">({totalItems})</span>
+                    )}
                     {totalItems > 0 && (
                       <span className="inline-flex items-center justify-center px-2 min-w-[20px] h-5 rounded-full bg-primary-600 text-white text-xs">
                         {totalItems}
