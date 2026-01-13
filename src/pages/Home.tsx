@@ -32,14 +32,65 @@ export default function Home() {
         {/* À propos */}
         <div className="mt-6">
           <div className="rounded-2xl border border-[var(--border-soft)] bg-white p-4 sm:p-5">
-            <div className="font-extrabold text-lg sm:text-xl mb-1">Gabarits.fr — atelier de motifs</div>
+            <div className="font-extrabold text-lg sm:text-xl mb-1">
+              Gabarits.fr — atelier de motifs
+            </div>
             <div className="text-secondary-700 text-sm">
-              Nous créons des gabarits de couture premium pour sellerie moto et auto: hexagone, chevron,
-              curve/wave, line sport, spider… Chaque motif est pensé pour une pose régulière et un rendu
-              propre, avec plusieurs pas (30/40/50/70 mm) selon la taille de la selle. Expédition rapide,
-              sur‑mesure possible sur demande.
+              Nous créons des gabarits de couture premium pour sellerie moto et auto: hexagone,
+              chevron, curve/wave, line sport, spider… Chaque motif est pensé pour une pose
+              régulière et un rendu propre, avec plusieurs pas (30/40/50/70 mm) selon la taille de
+              la selle. Expédition rapide, sur‑mesure possible sur demande.
             </div>
           </div>
+        </div>
+        {/* Exemples de gabarits */}
+        <div className="mt-6">
+          <div className="flex items-center justify-between mb-3">
+            <div className="font-extrabold text-lg sm:text-xl">Exemples de gabarits</div>
+            <Link to="/search" className="text-primary-600 hover:text-primary-700 text-sm">
+              Voir le catalogue
+            </Link>
+          </div>
+          {(() => {
+            const showcaseIds = ['G-003', 'B-011', 'C-001'];
+            const showcase = CATALOG.filter((p) => showcaseIds.includes(p.id));
+            return (
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                {showcase.map((p) => (
+                  <Link
+                    key={p.id}
+                    to={`/product/${p.id}?category=moto`}
+                    className="rounded-amazon border border-[var(--border-soft)] bg-white overflow-hidden hover:shadow-lg transition"
+                  >
+                    <div className="aspect-square bg-white flex items-center justify-center">
+                      {p.image ? (
+                        <img
+                          src={p.image}
+                          alt={p.name}
+                          className="w-full h-full object-contain"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="text-secondary-600 text-sm">Image à venir</div>
+                      )}
+                    </div>
+                    <div className="p-3">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="badge-cat cat-moto">Moto</span>
+                        {p.specialOrder && (
+                          <span className="px-2 py-1 rounded-amazon bg-amber-100 text-amber-800 text-xs font-medium">
+                            Sur commande
+                          </span>
+                        )}
+                      </div>
+                      <div className="font-medium text-secondary-900 text-sm">{p.name}</div>
+                      <div className="text-primary-700 text-sm">À partir de {p.basePrice}€</div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            );
+          })()}
         </div>
         {/* Produits populaires */}
         <div className="mt-6">
@@ -50,25 +101,32 @@ export default function Home() {
             </Link>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {CATALOG.filter((p) => p.popular).slice(0, 8).map((p) => (
-              <Link
-                key={p.id}
-                to={`/product/${p.id}?category=moto`}
-                className="rounded-amazon border border-[var(--border-soft)] bg-white overflow-hidden hover:shadow-lg transition"
-              >
-                <div className="aspect-square bg-white flex items-center justify-center">
-                  {p.image ? (
-                    <img src={p.image} alt={p.name} className="w-full h-full object-contain" loading="lazy" />
-                  ) : (
-                    <div className="text-secondary-600 text-sm">Image à venir</div>
-                  )}
-                </div>
-                <div className="p-3">
-                  <div className="font-medium text-secondary-900 text-sm">{p.name}</div>
-                  <div className="text-primary-700 text-sm">{p.basePrice}€</div>
-                </div>
-              </Link>
-            ))}
+            {CATALOG.filter((p) => p.popular)
+              .slice(0, 8)
+              .map((p) => (
+                <Link
+                  key={p.id}
+                  to={`/product/${p.id}?category=moto`}
+                  className="rounded-amazon border border-[var(--border-soft)] bg-white overflow-hidden hover:shadow-lg transition"
+                >
+                  <div className="aspect-square bg-white flex items-center justify-center">
+                    {p.image ? (
+                      <img
+                        src={p.image}
+                        alt={p.name}
+                        className="w-full h-full object-contain"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="text-secondary-600 text-sm">Image à venir</div>
+                    )}
+                  </div>
+                  <div className="p-3">
+                    <div className="font-medium text-secondary-900 text-sm">{p.name}</div>
+                    <div className="text-primary-700 text-sm">{p.basePrice}€</div>
+                  </div>
+                </Link>
+              ))}
           </div>
         </div>
         <div className="grid grid-cols-1 gap-6 mt-6">
