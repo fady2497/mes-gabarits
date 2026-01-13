@@ -3,6 +3,7 @@ import { Home as HomeIcon, Menu, X, Bot, Facebook as FacebookIcon } from 'lucide
 import SupportBot from './SupportBot';
 import FloatingDock from './FloatingDock';
 import { whatsappUrl, facebookDeepLink, openFacebook } from '../config';
+import { useCartStore } from '../store/index.tsx';
 import { Link, Outlet } from 'react-router-dom';
 // ContactBar removed from header; info moved to footer
 import FooterSimple from './FooterSimple';
@@ -13,6 +14,7 @@ import { CONTACT } from '../constants/contact';
 export default function Layout() {
   const [isAuthed, setIsAuthed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { totalItems } = useCartStore();
   useEffect(() => {
     (async () => {
       const { data } = await (supabase as any).auth.getSession();
@@ -40,8 +42,16 @@ export default function Layout() {
               <Link to="/search" className="text-secondary-700 hover:text-secondary-900">
                 Recherche
               </Link>
-              <Link to="/cart" className="text-secondary-700 hover:text-secondary-900">
+              <Link to="/cart" className="relative text-secondary-700 hover:text-secondary-900">
                 Panier
+                {totalItems > 0 && (
+                  <span
+                    className="ml-2 inline-flex items-center justify-center px-2 min-w-[20px] h-5 rounded-full bg-primary-600 text-white text-xs"
+                    aria-live="polite"
+                  >
+                    {totalItems}
+                  </span>
+                )}
               </Link>
               <Link to="/contact" className="text-secondary-700 hover:text-secondary-900">
                 Contact
@@ -155,7 +165,14 @@ export default function Layout() {
                   className="block px-3 py-2 rounded-lg hover:bg-gray-100"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Panier
+                  <span className="inline-flex items-center gap-2">
+                    <span>Panier</span>
+                    {totalItems > 0 && (
+                      <span className="inline-flex items-center justify-center px-2 min-w-[20px] h-5 rounded-full bg-primary-600 text-white text-xs">
+                        {totalItems}
+                      </span>
+                    )}
+                  </span>
                 </Link>
                 <Link
                   to="/contact"
