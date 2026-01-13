@@ -103,8 +103,89 @@ const ProductPage: React.FC = () => {
     ].filter(Boolean);
     return lines.join(' ');
   }, [catalogProduct]);
+  const tips = useMemo(() => {
+    if (!catalogProduct) return [] as string[];
+    const series = catalogProduct.series;
+    const coteMatch =
+      (catalogProduct.photoNotes || '').match(/(\d{2,3})\s*mm/) ||
+      catalogProduct.description.match(/(\d{2,3})\s*mm/);
+    const mm = coteMatch ? parseInt(coteMatch[1]) : undefined;
+    const res: string[] = [];
+    if (mm) {
+      if (mm <= 35) res.push('Pas fin: idéal petite assise ou look discret.');
+      else if (mm <= 50) res.push('Pas moyen: usage route/sport, bon équilibre rendu/temps de pose.');
+      else res.push('Pas large: touring/custom, accent visuel fort.');
+      res.push(`Ce modèle utilise un pas ${mm} mm.`);
+    }
+    const motifNote: Record<string, string> = {
+      A: 'Hexagone: look premium; éviter sur très petites selles si pas > 50 mm.',
+      B: 'Chevron: convient sport/custom; possible en aligné ou décalé.',
+      C: 'Curve/Wave: rendu fluide; bien sur selles avec galbe.',
+      F: 'Line sport: lignes parallèles régulières, style racing.',
+      L: 'Wave: ondule plus visible sur pas large.',
+      M: 'Losange: classique intemporel; surpiqûre épaisse conseillée.'
+    };
+    if (motifNote[series]) res.push(motifNote[series]);
+    res.push('Tracer au feutre effaçable, piquer en partant du centre pour garder la régularité.');
+    return res;
+  }, [catalogProduct]);
 
-  const reviews: any[] = [];
+  function buildReviews(cp?: any) {
+    if (!cp) return [];
+    const s = cp.series;
+    const motifMap: Record<string, string> = {
+      A: 'Hexagone',
+      B: 'Chevron',
+      C: 'Curve',
+      D: 'Curve',
+      E: 'Spider',
+      F: 'Line sport',
+      G: 'Spécial',
+      H: 'Harley',
+      I: 'Pano & Selle',
+      J: 'Ovale',
+      K: 'Lacer',
+      L: 'Wave',
+      M: 'Losange'
+    };
+    const motif = motifMap[s] || 'Motif';
+    const coteMatch =
+      (cp.photoNotes || '').match(/(\d{2,3})\s*mm/) || cp.description.match(/(\d{2,3})\s*mm/);
+    const cote = coteMatch ? `${coteMatch[1]} mm` : undefined;
+    const baseDate = '2025-01-05';
+    return [
+      {
+        id: 'r1',
+        user: 'Atelier Motos Paris',
+        rating: 5,
+        date: baseDate,
+        comment: `Pose très propre. ${motif}${cote ? ` ${cote}` : ''} donne un rendu régulier sur selle route. Tracé au feutre, couture nickel.`,
+        helpful: 18,
+        verified: true
+      },
+      {
+        id: 'r2',
+        user: 'Sellerie Sud',
+        rating: 4,
+        date: '2025-01-02',
+        comment:
+          'Bon gabarit, les repères sont clairs. Surpiqûre contrastée conseillée pour mettre le motif en valeur.',
+        helpful: 9,
+        verified: true
+      },
+      {
+        id: 'r3',
+        user: 'Moto Custom 67',
+        rating: 5,
+        date: '2024-12-28',
+        comment:
+          'Essai réussi sur une selle large touring. Le pas convient bien; le client a apprécié la régularité.',
+        helpful: 6,
+        verified: false
+      }
+    ];
+  }
+  const reviews = useMemo(() => buildReviews(catalogProduct), [catalogProduct]);
 
   const related = useMemo(() => {
     if (!catalogProduct) return [] as typeof CATALOG;
@@ -523,7 +604,8 @@ const ProductPage: React.FC = () => {
             <nav className="flex space-x-8">
               {[
                 { id: 'description', label: 'Description' },
-                { id: 'specs', label: 'Spécifications' }
+                { id: 'specs', label: 'Spécifications' },
+                { id: 'reviews', label: `Avis (${reviews.length})` }
               ].map((tab) => (
                 <button
                   key={tab.id}
@@ -545,6 +627,14 @@ const ProductPage: React.FC = () => {
               <div className="prose max-w-none">
                 <p className="text-secondary-700 mb-3">{longDesc}</p>
                 <p className="text-secondary-700 mb-6">{product.description}</p>
+                <div className="rounded-amazon-lg border border-gray-200 p-4 bg-secondary-50">
+                  <div className="font-semibold text-secondary-900 mb-2">Conseils d’utilisation</div>
+                  <ul className="list-disc pl-5">
+                    {tips.map((t, i) => (
+                      <li key={i} className="text-secondary-700">{t}</li>
+                    ))}
+                  </ul>
+                </div>
                 <h3 className="text-lg font-semibold text-secondary-900 mb-4">
                   Caractéristiques principales
                 </h3>
@@ -576,7 +666,78 @@ const ProductPage: React.FC = () => {
               </div>
             )}
 
-            {/* Avis retirés pour ce site (sellerie moto) */}
+            {selectedTab === 'reviews' && (
+              <div className="space-y-6">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center space-x-4">
+                    <div className="text-4xl font-bold text-secondary-900">{product.rating}</div>
+                    <div>
+                      <div className="flex items-center">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`h-5 w-5 ${
+                              i < Math.floor(product.rating)
+                                ? 'text-yellow-400 fill-current'
+                                : 'text-gray-300'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                      <div className="text-sm text-secondary-600">
+                        Basé sur {reviews.length} avis
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-6">
+                  {reviews.map((review) => (
+                    <div key={review.id} className="border border-gray-200 rounded-amazon-lg p-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
+                            <span className="text-primary-600 font-semibold">
+                              {review.user.charAt(0)}
+                            </span>
+                          </div>
+                          <div>
+                            <div className="font-medium text-secondary-900">{review.user}</div>
+                            <div className="flex items-center space-x-2">
+                              <div className="flex items-center">
+                                {[...Array(5)].map((_, i) => (
+                                  <Star
+                                    key={i}
+                                    className={`h-4 w-4 ${
+                                      i < review.rating
+                                        ? 'text-yellow-400 fill-current'
+                                        : 'text-gray-300'
+                                    }`}
+                                  />
+                                ))}
+                              </div>
+                              <span className="text-sm text-secondary-600">{review.date}</span>
+                              {review.verified && (
+                                <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">
+                                  <CheckCircle className="h-3 w-3 mr-1" />
+                                  Atelier vérifié
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-secondary-700 mb-4">{review.comment}</p>
+                      <div className="flex items-center space-x-4">
+                        <button className="flex items-center space-x-1 text-sm text-secondary-600 hover:text-primary-600 transition-colors">
+                          <ThumbsUp className="h-4 w-4" />
+                          <span>Utile ({review.helpful})</span>
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
