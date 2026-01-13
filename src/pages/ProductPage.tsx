@@ -72,6 +72,37 @@ const ProductPage: React.FC = () => {
       warranty: 'Artisan'
     };
   }, [catalogProduct]);
+  const longDesc = useMemo(() => {
+    if (!catalogProduct) return '';
+    const s = catalogProduct.series;
+    const base = {
+      A: 'Hexagone',
+      B: 'Chevron',
+      C: 'Curve',
+      D: 'Curve',
+      E: 'Spider',
+      F: 'Line sport',
+      G: 'Spécial',
+      H: 'Spécial Harley',
+      I: 'Pano & Selle',
+      J: 'Ovale',
+      K: 'Lacer',
+      L: 'Wave',
+      M: 'Losange'
+    } as Record<string, string>;
+    const motif = base[s] || 'Motif';
+    const coteMatch =
+      (catalogProduct.photoNotes || '').match(/(\d{2,3})\s*mm/) ||
+      catalogProduct.description.match(/(\d{2,3})\s*mm/);
+    const cote = coteMatch ? `${coteMatch[1]} mm` : '';
+    const lines = [
+      `Série ${s} — ${motif}${cote ? ` ${cote}` : ''}.`,
+      'Gabarit prêt à l’emploi pour traçage couture régulier.',
+      'Compatible sellerie moto; autres usages possibles sur demande.',
+      catalogProduct.photoNotes ? `Notes photo: ${catalogProduct.photoNotes}.` : ''
+    ].filter(Boolean);
+    return lines.join(' ');
+  }, [catalogProduct]);
 
   const reviews = [
     {
@@ -542,6 +573,7 @@ const ProductPage: React.FC = () => {
           <div className="py-8">
             {selectedTab === 'description' && (
               <div className="prose max-w-none">
+                <p className="text-secondary-700 mb-3">{longDesc}</p>
                 <p className="text-secondary-700 mb-6">{product.description}</p>
                 <h3 className="text-lg font-semibold text-secondary-900 mb-4">
                   Caractéristiques principales
