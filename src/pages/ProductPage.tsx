@@ -104,36 +104,7 @@ const ProductPage: React.FC = () => {
     return lines.join(' ');
   }, [catalogProduct]);
 
-  const reviews = [
-    {
-      id: '1',
-      user: 'Jean D.',
-      rating: 5,
-      date: '2024-01-15',
-      comment:
-        'Excellent produit ! La qualité de construction est exceptionnelle et les photos sont incroyables.',
-      helpful: 23,
-      verified: true
-    },
-    {
-      id: '2',
-      user: 'Marie L.',
-      rating: 4,
-      date: '2024-01-10',
-      comment: 'Très bon téléphone mais le prix est élevé. Les performances sont au rendez-vous.',
-      helpful: 15,
-      verified: true
-    },
-    {
-      id: '3',
-      user: 'Pierre M.',
-      rating: 5,
-      date: '2024-01-08',
-      comment: "Passage de l'iPhone 13 Pro Max, c'est un vrai upgrade. Le titane est magnifique.",
-      helpful: 8,
-      verified: false
-    }
-  ];
+  const reviews: any[] = [];
 
   const related = useMemo(() => {
     if (!catalogProduct) return [] as typeof CATALOG;
@@ -552,8 +523,7 @@ const ProductPage: React.FC = () => {
             <nav className="flex space-x-8">
               {[
                 { id: 'description', label: 'Description' },
-                { id: 'specs', label: 'Spécifications' },
-                { id: 'reviews', label: `Avis (${reviews.length})` }
+                { id: 'specs', label: 'Spécifications' }
               ].map((tab) => (
                 <button
                   key={tab.id}
@@ -606,84 +576,7 @@ const ProductPage: React.FC = () => {
               </div>
             )}
 
-            {selectedTab === 'reviews' && (
-              <div className="space-y-6">
-                <div className="flex items-center justify-between mb-8">
-                  <div className="flex items-center space-x-4">
-                    <div className="text-4xl font-bold text-secondary-900">{product.rating}</div>
-                    <div>
-                      <div className="flex items-center">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`h-5 w-5 ${
-                              i < Math.floor(product.rating)
-                                ? 'text-yellow-400 fill-current'
-                                : 'text-gray-300'
-                            }`}
-                          />
-                        ))}
-                      </div>
-                      <div className="text-sm text-secondary-600">
-                        Basé sur {reviews.length} avis
-                      </div>
-                    </div>
-                  </div>
-                  <button className="btn-primary">Écrire un avis</button>
-                </div>
-
-                <div className="space-y-6">
-                  {reviews.map((review) => (
-                    <div key={review.id} className="border border-gray-200 rounded-amazon-lg p-6">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                            <span className="text-primary-600 font-semibold">
-                              {review.user.charAt(0)}
-                            </span>
-                          </div>
-                          <div>
-                            <div className="font-medium text-secondary-900">{review.user}</div>
-                            <div className="flex items-center space-x-2">
-                              <div className="flex items-center">
-                                {[...Array(5)].map((_, i) => (
-                                  <Star
-                                    key={i}
-                                    className={`h-4 w-4 ${
-                                      i < review.rating
-                                        ? 'text-yellow-400 fill-current'
-                                        : 'text-gray-300'
-                                    }`}
-                                  />
-                                ))}
-                              </div>
-                              <span className="text-sm text-secondary-600">{review.date}</span>
-                              {review.verified && (
-                                <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">
-                                  <CheckCircle className="h-3 w-3 mr-1" />
-                                  Achat vérifié
-                                </span>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <p className="text-secondary-700 mb-4">{review.comment}</p>
-                      <div className="flex items-center space-x-4">
-                        <button className="flex items-center space-x-1 text-sm text-secondary-600 hover:text-primary-600 transition-colors">
-                          <ThumbsUp className="h-4 w-4" />
-                          <span>Utile ({review.helpful})</span>
-                        </button>
-                        <button className="flex items-center space-x-1 text-sm text-secondary-600 hover:text-primary-600 transition-colors">
-                          <ThumbsDown className="h-4 w-4" />
-                          <span>Pas utile</span>
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            {/* Avis retirés pour ce site (sellerie moto) */}
           </div>
         </div>
 
