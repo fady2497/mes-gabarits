@@ -129,6 +129,15 @@ const ProductPage: React.FC = () => {
     res.push('Tracer au feutre effaçable, piquer en partant du centre pour garder la régularité.');
     return res;
   }, [catalogProduct]);
+  const upsell = useMemo(() => {
+    if (!catalogProduct) return [] as typeof CATALOG;
+    const pool = CATALOG.filter(
+      (p) =>
+        p.id !== catalogProduct.id &&
+        (p.series === catalogProduct.series || ['F', 'L', 'M', 'C'].includes(p.series))
+    ).slice(0, 4);
+    return pool;
+  }, [catalogProduct]);
 
   function buildReviews(cp?: any) {
     if (!cp) return [];
@@ -519,6 +528,71 @@ const ProductPage: React.FC = () => {
                   Pour Voiture / Maison / Bateau, saisissez la taille voulue et ouvrez dans le
                   créateur.
                 </div>
+              </div>
+            </div>
+            <div className="mt-8">
+              <div className="flex items-center justify-between mb-3">
+                <div className="text-xl font-bold text-secondary-900">Complétez votre achat</div>
+                {upsell.length > 0 && (
+                  <button
+                    className="btn-secondary"
+                    onClick={() => {
+                      upsell.forEach((p) =>
+                        addItem({
+                          productId: p.id,
+                          quantity: 1,
+                          price: p.basePrice,
+                          name: p.name,
+                          image: p.image,
+                          usage
+                        })
+                      );
+                    }}
+                  >
+                    Tout ajouter
+                  </button>
+                )}
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {upsell.map((p, i) => (
+                  <div
+                    key={p.id}
+                    className="border border-gray-200 rounded-amazon-lg p-3 flex items-center justify-between gap-3 bg-white"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-20 h-20 bg-white rounded-amazon overflow-hidden flex items-center justify-center">
+                        {p.image ? (
+                          <img src={p.image} alt={p.name} className="w-full h-full object-contain" />
+                        ) : (
+                          <div className="text-secondary-600 text-xs">Image</div>
+                        )}
+                      </div>
+                      <div>
+                        <div className="font-medium text-secondary-900">{p.name}</div>
+                        <div className="text-sm text-secondary-600">{Number(p.rating).toFixed(1)}</div>
+                        <div className="text-primary-700 font-bold">{p.basePrice}€</div>
+                      </div>
+                    </div>
+                    <button
+                      className="btn-primary"
+                      onClick={() =>
+                        addItem({
+                          productId: p.id,
+                          quantity: 1,
+                          price: p.basePrice,
+                          name: p.name,
+                          image: p.image,
+                          usage
+                        })
+                      }
+                    >
+                      Ajouter
+                    </button>
+                  </div>
+                ))}
+                {upsell.length === 0 && (
+                  <div className="text-secondary-700">Aucun complément suggéré</div>
+                )}
               </div>
             </div>
 
