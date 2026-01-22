@@ -8,17 +8,17 @@ export const supabase: any =
     ? createClient(url, anon)
     : {
         auth: {
-          signInWithPassword: async ({ email, password }: { email: string; password: string }) => ({
+          signInWithPassword: async ({ email, password: _password }: { email: string; password: string }) => ({
             data: { user: { id: 'local-user', email }, session: { token: 'local-token' } },
             error: null
           }),
-          signUp: async ({ email, password }: { email: string; password: string }) => ({
+          signUp: async ({ email, password: _password }: { email: string; password: string }) => ({
             data: { user: { id: 'local-user', email }, session: { token: 'local-token' } },
             error: null
           }),
           signOut: async () => ({}),
           getSession: async () => ({ data: { session: null }, error: null }),
-          signInWithOtp: async ({ email }: { email: string }) => ({ data: {}, error: null })
+          signInWithOtp: async ({ email: _email }: { email: string }) => ({ data: {}, error: null })
         },
         from: (_table: string) => ({
           select: (_?: string) => Promise.resolve({ data: [], error: null }),

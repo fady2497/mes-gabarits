@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { supabase } from '../lib/supabase';
+import { Session } from '@supabase/supabase-js';
 
 interface User {
   id: string;
@@ -11,7 +12,7 @@ interface User {
 
 interface AuthState {
   user: User | null;
-  session: any | null;
+  session: Session | null;
   loading: boolean;
   error: string | null;
 
@@ -46,8 +47,8 @@ export const useAuthStore = create<AuthState>((set) => ({
 
         set({ user: userData, session: data.session, loading: false });
       }
-    } catch (error: any) {
-      set({ error: error.message, loading: false });
+    } catch (error: unknown) {
+      set({ error: (error as Error).message, loading: false });
       throw error;
     }
   },
@@ -74,8 +75,8 @@ export const useAuthStore = create<AuthState>((set) => ({
 
         set({ user: data.user, session: data.session, loading: false });
       }
-    } catch (error: any) {
-      set({ error: error.message, loading: false });
+    } catch (error: unknown) {
+      set({ error: (error as Error).message, loading: false });
       throw error;
     }
   },
@@ -85,8 +86,8 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       await supabase.auth.signOut();
       set({ user: null, session: null, loading: false });
-    } catch (error: any) {
-      set({ error: error.message, loading: false });
+    } catch (error: unknown) {
+      set({ error: (error as Error).message, loading: false });
     }
   },
 
@@ -108,8 +109,8 @@ export const useAuthStore = create<AuthState>((set) => ({
       } else {
         set({ user: null, session: null, loading: false });
       }
-    } catch (error: any) {
-      set({ error: error.message, loading: false });
+    } catch (error: unknown) {
+      set({ error: (error as Error).message, loading: false });
     }
   }
 }));

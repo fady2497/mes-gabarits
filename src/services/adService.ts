@@ -35,4 +35,8 @@ export async function fetchAds(): Promise<AdsResponse> {
     return { banner: undefined, slots: [] };
   }
 }
+export async function trackClick(adId: string) {
+  // empty
+}
+
 import { supabase } from '../lib/supabase';

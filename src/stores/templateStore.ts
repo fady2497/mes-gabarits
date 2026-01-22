@@ -12,7 +12,7 @@ interface Template {
   category_id: string
   user_id: string
   tags: string[] | null
-  dimensions: any | null
+  dimensions: Record<string, unknown> | null
   created_at: string
   updated_at: string
 }
@@ -21,7 +21,7 @@ interface Category {
   id: string
   name: string
   type: 'moto' | 'voiture' | 'maison' | 'bateau'
-  specifications: any | null
+  specifications: Record<string, unknown> | null
 }
 
 interface TemplateState {
@@ -32,11 +32,11 @@ interface TemplateState {
   
   fetchTemplates: (filters?: { category?: string; type?: string; isPublic?: boolean }) => Promise<void>
   fetchCategories: () => Promise<void>
-  createTemplate: (data: any) => Promise<void>
+  createTemplate: (data: Record<string, unknown>) => Promise<void>
   downloadTemplate: (templateId: string, format: 'pdf' | 'svg' | 'png' | 'dxf') => Promise<void>
 }
 
-export const useTemplateStore = create<TemplateState>((set, get) => ({
+export const useTemplateStore = create<TemplateState>((set) => ({
   templates: [],
   categories: [],
   loading: false,
@@ -71,9 +71,9 @@ export const useTemplateStore = create<TemplateState>((set, get) => ({
       
       if (error) throw error
       
-      set({ templates: data || [], loading: false })
-    } catch (error: any) {
-      set({ error: error.message, loading: false })
+      set({ templates: (data as Template[]) || [], loading: false })
+    } catch (error: unknown) {
+      set({ error: (error as Error).message, loading: false })
     }
   },
 
@@ -84,13 +84,13 @@ export const useTemplateStore = create<TemplateState>((set, get) => ({
       
       if (error) throw error
       
-      set({ categories: data || [], loading: false })
-    } catch (error: any) {
-      set({ error: error.message, loading: false })
+      set({ categories: (data as Category[]) || [], loading: false })
+    } catch (error: unknown) {
+      set({ error: (error as Error).message, loading: false })
     }
   },
 
-  createTemplate: async (templateData: any) => {
+  createTemplate: async (templateData: Record<string, unknown>) => {
     set({ loading: true, error: null })
     try {
       const { data, error } = await supabase
@@ -102,30 +102,26 @@ export const useTemplateStore = create<TemplateState>((set, get) => ({
       if (error) throw error
       
       set((state) => ({
-        templates: [data, ...state.templates],
+        templates: [data as Template, ...state.templates],
         loading: false
       }))
-    } catch (error: any) {
-      set({ error: error.message, loading: false })
+    } catch (error: unknown) {
+      set({ error: (error as Error).message, loading: false })
       throw error
     }
   },
 
   downloadTemplate: async (templateId: string, format: 'pdf' | 'svg' | 'png' | 'dxf') => {
-    try {
-      const { data, error } = await supabase
-        .from('downloads')
-        .insert({
-          template_id: templateId,
-          format,
-        })
-      
-      if (error) throw error
-      
-      // Ici on pourrait générer le fichier et le télécharger
-      // Pour l'instant on enregistre juste le téléchargement
-    } catch (error: any) {
-      throw error
-    }
+    const { error } = await supabase
+      .from('downloads')
+      .insert({
+        template_id: templateId,
+        format,
+      })
+    
+    if (error) throw error
+    
+    // Ici on pourrait générer le fichier et le télécharger
+    // Pour l'instant on enregistre juste le téléchargement
   },
 }))

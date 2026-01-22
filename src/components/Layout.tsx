@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Home as HomeIcon, Menu, X, Bot, Facebook as FacebookIcon } from 'lucide-react';
 import SupportBot from './SupportBot';
 import FloatingDock from './FloatingDock';
-import { whatsappUrl, facebookDeepLink, openFacebook } from '../config';
+import { openFacebook } from '../config';
 import { useCartStore } from '../store/index.tsx';
 import { Link, Outlet } from 'react-router-dom';
 // ContactBar removed from header; info moved to footer

@@ -11,7 +11,6 @@ import {
   ChevronLeft,
   ChevronRight,
   ThumbsUp,
-  ThumbsDown,
   CheckCircle,
   AlertCircle
 } from 'lucide-react';

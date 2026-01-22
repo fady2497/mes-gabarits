@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { User, Settings, Download, Plus, Eye, Edit, Trash2, Save, FileText } from 'lucide-react';
+import { User, Settings, Download, Plus, Eye, Edit, Trash2, FileText } from 'lucide-react';
 import { useAuthStore } from '../stores/authStore';
 import { useTemplateStore } from '../stores/templateStore';
 import { Button } from '../components/ui/button';

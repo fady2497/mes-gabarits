@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
 import HeroCarousel from '../components/HeroCarousel';
-import AdSlot from '../components/AdSlot';
 import SeasonBanner from '../components/SeasonBanner';
 import StoriesShowcase from '../components/StoriesShowcase';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { fetchAds, type AdsResponse } from '../services/adService';
 import { Bike, ArrowRight, Sparkles } from 'lucide-react';
-import { homeMotoImage, homeMotoLink } from '../config';
+import { homeMotoImage } from '../config';
 import { CATALOG } from '../data/catalog';
 
 export default function Home() {

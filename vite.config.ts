@@ -45,13 +45,13 @@ export default defineConfig({
                 temperature: 0.4
               })
             });
-            const data: any = await rsp.json();
+            const data: { choices?: { message?: { content?: string } }[] } = await rsp.json();
             const reply =
               data?.choices?.[0]?.message?.content || 'Désolé, je n’ai pas pu répondre.';
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify({ reply }));
-          } catch (e: any) {
+          } catch (_e) {
             res.statusCode = 500;
             res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify({ error: 'proxy_failed' }));
@@ -59,5 +59,6 @@ export default defineConfig({
         });
       }
     }
-  ]
+  ],
+  base: '/mes-gabarits/'
 });

@@ -92,7 +92,7 @@ async function callAI(input: string, history: ChatMsg[]) {
       ]
     });
     const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 8000);
+    setTimeout(() => ctrl.abort(), 8000);
     const rsp = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

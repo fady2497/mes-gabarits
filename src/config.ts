@@ -1,6 +1,5 @@
 export const whatsappUrl = 'https://wa.me/330759652867';
-export const homeMotoImage =
-  '/images/tmax1.jpeg';
+export const homeMotoImage = '/images/tmax1.jpeg';
 export const homeMotoLink = 'https://lesbikeuses.fr/lxs-125-lexmoto/';
 export const facebookDeepLink = (webUrl: string) =>
   `fb://facewebmodal/f?href=${encodeURIComponent(webUrl)}`;
@@ -14,14 +13,12 @@ export function openFacebook(webUrl: string) {
   }
   attempts.push(facebookDeepLink(webUrl));
   const start = Date.now();
-  let tried = false;
   const tryNext = () => {
     const next = attempts.shift();
     if (!next) {
       window.open(webUrl, '_blank');
       return;
     }
-    tried = true;
     window.location.href = next;
     setTimeout(() => {
       if (Date.now() - start < 1500) {

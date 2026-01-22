@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   CreditCard,
@@ -62,6 +62,10 @@ const CheckoutPage: React.FC = () => {
   const [saveAddress, setSaveAddress] = useState(false);
   const [newsletter, setNewsletter] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    // empty
+  }, []);
 
   const shippingCost =
     shippingMethod === 'standard'
