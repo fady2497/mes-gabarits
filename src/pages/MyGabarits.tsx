@@ -9,14 +9,19 @@ export default function MyGabarits() {
 
   useEffect(() => {
     const load = async () => {
-      const userId = localStorage.getItem('editor_user_id') || null;
-      const { data, error } = await (supabase as any)
-        .from('gabarits')
-        .select('id, nom, categorie, data_svg, created_at')
-        .eq('user_id', userId)
-        .order('created_at', { ascending: false });
-      if (!error && data) setItems(data);
-      setLoading(false);
+      try {
+        const userId = localStorage.getItem('editor_user_id') || null;
+        const { data, error } = await (supabase as any)
+          .from('gabarits')
+          .select('id, nom, categorie, data_svg, created_at')
+          .eq('user_id', userId)
+          .order('created_at', { ascending: false });
+        if (!error && data) setItems(data);
+      } catch (e) {
+        console.error('Erreur chargement gabarits:', e);
+      } finally {
+        setLoading(false);
+      }
     };
     load();
   }, []);
