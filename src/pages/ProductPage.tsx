@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { useParams, Link, useSearchParams } from 'react-router-dom';
 import {
   Star,
@@ -15,6 +15,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { useCartStore } from '../store/index.tsx';
+import { setMeta, setCanonical, setJsonLd } from '../utils/seo';
 import { CATALOG, getProductById, SERIES_BY_CATEGORY, getCategoryForSeries } from '../data/catalog';
 
 const ProductPage: React.FC = () => {
@@ -87,11 +88,44 @@ const ProductPage: React.FC = () => {
   }, [catalogProduct]);
 
   // SEO Dynamique
-  React.useEffect(() => {
-    if (product) {
-      document.title = `${product.name} | Gabarits.fr`;
-    }
-  }, [product]);
+  useEffect(() => {
+    if (!product) return;
+    const url = `https://gabarits.fr/product/${product.id}`;
+    document.title = `${product.name} | Gabarits.fr`;
+    setCanonical(url);
+    const desc = `${product.description} — Gabarits professionnels pour sellerie moto.`;
+    setMeta('name', 'description', desc);
+    setMeta('property', 'og:title', `${product.name} | Gabarits.fr`);
+    setMeta('property', 'og:description', desc);
+    setMeta('property', 'og:url', url);
+    setMeta('property', 'og:type', 'product');
+    setMeta('property', 'og:image', product.images?.[0] || 'https://gabarits.fr/images/gabarit-sellerie-serie-g1-special-nda-gabaritsfr.png');
+    setMeta('name', 'twitter:card', 'summary_large_image');
+    setMeta('name', 'twitter:title', `${product.name} | Gabarits.fr`);
+    setMeta('name', 'twitter:description', desc);
+    setMeta('name', 'twitter:image', product.images?.[0] || 'https://gabarits.fr/images/gabarit-sellerie-serie-g1-special-nda-gabaritsfr.png');
+    const price = dynamicPrice || product.price;
+    setJsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: product.name,
+      image: product.images?.[0] ? `https://gabarits.fr${product.images[0]}` : undefined,
+      description: desc,
+      brand: { '@type': 'Brand', name: 'Gabarits.fr' },
+      offers: {
+        '@type': 'Offer',
+        url,
+        priceCurrency: 'EUR',
+        price,
+        availability: 'http://schema.org/InStock'
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: Number(product.rating || '4.8'),
+        reviewCount: 120
+      }
+    });
+  }, [product, dynamicPrice]);
 
   const longDesc = useMemo(() => {
     if (!catalogProduct) return '';

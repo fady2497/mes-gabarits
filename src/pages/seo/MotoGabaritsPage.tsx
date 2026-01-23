@@ -1,15 +1,29 @@
 import React, { useEffect } from 'react';
+import { setMeta, setCanonical, setJsonLd } from '../../utils/seo';
 import { Link } from 'react-router-dom';
 import { CATALOG, SERIES_BY_CATEGORY } from '../../data/catalog';
 import { Bike, CheckCircle, ArrowRight } from 'lucide-react';
 
 export default function MotoGabaritsPage() {
   useEffect(() => {
-    document.title = "Gabarits sellerie moto | Gabarits professionnels – Gabarits.fr";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', "Gabarits de sellerie moto conçus pour les artisans et selliers professionnels. Précision, gain de temps et finition haut de gamme pour selles moto.");
-    }
+    const url = 'https://gabarits.fr/gabarits-sellerie-moto';
+    document.title = 'Gabarits sellerie moto | Gabarits professionnels – Gabarits.fr';
+    setCanonical(url);
+    const desc = 'Gabarits de sellerie moto conçus pour les artisans et selliers professionnels. Précision, gain de temps et finition haut de gamme pour selles moto.';
+    setMeta('name', 'description', desc);
+    setMeta('property', 'og:title', 'Gabarits sellerie moto | Gabarits.fr');
+    setMeta('property', 'og:description', desc);
+    setMeta('property', 'og:url', url);
+    setMeta('property', 'og:type', 'website');
+    setMeta('name', 'twitter:card', 'summary_large_image');
+    setMeta('name', 'twitter:title', 'Gabarits sellerie moto | Gabarits.fr');
+    setMeta('name', 'twitter:description', desc);
+    setJsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      headline: 'Gabarits de sellerie moto professionnels',
+      url
+    });
   }, []);
 
   const motoProducts = CATALOG.filter((p) => SERIES_BY_CATEGORY.moto.includes(p.series)).slice(0, 8);
