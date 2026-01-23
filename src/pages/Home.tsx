@@ -33,15 +33,26 @@ export default function Home() {
         </div>
         {/* À propos */}
         <div className="mt-6">
-          <div className="rounded-2xl border border-[var(--border-soft)] bg-white p-4 sm:p-5">
-            <div className="font-extrabold text-lg sm:text-xl mb-1">
-              Gabarits.fr — atelier de motifs
-            </div>
-            <div className="text-secondary-700 text-sm">
-              Nous créons des gabarits de couture premium pour sellerie moto et auto: hexagone,
-              chevron, curve/wave, line sport, spider… Chaque motif est pensé pour une pose
-              régulière et un rendu propre, avec plusieurs pas (30/40/50/70 mm) selon la taille de
-              la selle. Expédition rapide, sur‑mesure possible sur demande.
+          <div className="rounded-2xl border border-[var(--border-soft)] bg-white p-6 sm:p-8 text-center md:text-left">
+            <h1 className="font-extrabold text-2xl sm:text-3xl mb-3 text-secondary-900">
+              Gabarits.fr — L'excellence au service de votre sellerie
+            </h1>
+            <p className="text-secondary-700 text-lg leading-relaxed max-w-4xl">
+              <strong>Artisans et passionnés</strong>, ne laissez plus le hasard dicter vos
+              coutures. Nos gabarits de précision sont conçus pour garantir des{' '}
+              <strong>motifs parfaits</strong> (hexagone, losange, curve...) et un{' '}
+              <strong>gain de temps considérable</strong> sur vos projets moto et auto.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2 justify-center md:justify-start">
+              <span className="px-3 py-1 bg-amber-50 text-amber-800 rounded-full text-sm font-medium">
+                ✨ Précision millimétrique
+              </span>
+              <span className="px-3 py-1 bg-amber-50 text-amber-800 rounded-full text-sm font-medium">
+                🇫🇷 Conception française
+              </span>
+              <span className="px-3 py-1 bg-amber-50 text-amber-800 rounded-full text-sm font-medium">
+                🚀 Expédition 24h
+              </span>
             </div>
           </div>
         </div>

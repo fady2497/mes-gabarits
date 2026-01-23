@@ -63,9 +63,15 @@ export default function ContactPage() {
       </div>
       <div className="card-amazon p-6 mt-6">
         <div className="flex items-center gap-2 text-secondary-900 mb-2">
-          <MapPin /> Adresse
+          <MapPin /> Localisation
         </div>
-        <div className="text-secondary-700">— À compléter —</div>
+        <div className="text-secondary-700">
+          Atelier situé en France 🇫🇷<br />
+          Expédition rapide dans toute l'Europe.
+        </div>
+        <div className="mt-4 pt-4 border-t border-gray-100 text-sm text-secondary-600">
+          Notre équipe vous répond sous 24h ouvrées (Lundi - Samedi).
+        </div>
       </div>
     </div>
   );

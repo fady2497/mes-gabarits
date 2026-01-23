@@ -53,9 +53,14 @@ export default function HeroCarousel() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
         <div className="relative h-full px-5 py-6 flex flex-col items-start justify-end gap-3">
-          <div className="text-white text-2xl font-extrabold">Gabarits Moto Premium</div>
-          <div className="text-white/80 text-sm">Motifs artisanaux et précision millimétrique</div>
-          <Link to="/search?category=moto" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500 text-white text-sm hover:bg-orange-600 transition">
+          <div className="text-white text-2xl font-extrabold">Sellerie d'Exception</div>
+          <div className="text-white/90 text-sm font-medium">
+            Sublimez vos créations avec nos gabarits de précision.
+          </div>
+          <Link
+            to="/search?category=moto"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-medium hover:scale-105 transition shadow-lg"
+          >
             Voir le catalogue
           </Link>
         </div>
