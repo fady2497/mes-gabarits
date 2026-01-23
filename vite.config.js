@@ -50,7 +50,7 @@ export default defineConfig({
                         res.setHeader('Content-Type', 'application/json');
                         res.end(JSON.stringify({ reply }));
                     }
-                    catch (e) {
+                    catch (_e) {
                         res.statusCode = 500;
                         res.setHeader('Content-Type', 'application/json');
                         res.end(JSON.stringify({ error: 'proxy_failed' }));
@@ -58,5 +58,6 @@ export default defineConfig({
                 });
             }
         }
-    ]
+    ],
+    base: '/'
 });

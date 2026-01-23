@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import HeroCarousel from '../components/HeroCarousel';
 import SeasonBanner from '../components/SeasonBanner';
+import ReassuranceBanner from '../components/ReassuranceBanner';
 import StoriesShowcase from '../components/StoriesShowcase';
 import { useEffect, useRef, useState } from 'react';
 import { fetchAds, type AdsResponse } from '../services/adService';
