@@ -51,7 +51,7 @@ export default function Home() {
             </Link>
           </div>
           {(() => {
-            const showcaseIds = ['G-003', 'B-011', 'C-001'];
+            const showcaseIds = ['G-001', 'G-002', 'G-003', 'G-004'];
             const showcase = CATALOG.filter((p) => showcaseIds.includes(p.id));
             return (
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">

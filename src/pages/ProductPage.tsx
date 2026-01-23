@@ -112,7 +112,8 @@ const ProductPage: React.FC = () => {
     const res: string[] = [];
     if (mm) {
       if (mm <= 35) res.push('Pas fin: idéal petite assise ou look discret.');
-      else if (mm <= 50) res.push('Pas moyen: usage route/sport, bon équilibre rendu/temps de pose.');
+      else if (mm <= 50)
+        res.push('Pas moyen: usage route/sport, bon équilibre rendu/temps de pose.');
       else res.push('Pas large: touring/custom, accent visuel fort.');
       res.push(`Ce modèle utilise un pas ${mm} mm.`);
     }
@@ -369,12 +370,12 @@ const ProductPage: React.FC = () => {
                     categoryKey === 'moto'
                       ? 'cat-moto'
                       : categoryKey === 'auto'
-                      ? 'cat-auto'
-                      : categoryKey === 'maison'
-                      ? 'cat-maison'
-                      : categoryKey === 'bateau'
-                      ? 'cat-nautique'
-                      : ''
+                        ? 'cat-auto'
+                        : categoryKey === 'maison'
+                          ? 'cat-maison'
+                          : categoryKey === 'bateau'
+                            ? 'cat-nautique'
+                            : ''
                   }`}
                 >
                   {categoryLabel}
@@ -385,19 +386,10 @@ const ProductPage: React.FC = () => {
               <div className="flex items-center space-x-4 mb-4">
                 <div className="flex items-center">
                   {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`h-5 w-5 ${
-                        i < Math.floor(product.rating)
-                          ? 'text-yellow-400 fill-current'
-                          : 'text-gray-300'
-                      }`}
-                    />
+                    <Star key={i} className={`h-5 w-5 hidden`} />
                   ))}
                 </div>
-                <span className="text-secondary-600">
-                  {product.rating} ({product.reviews} avis)
-                </span>
+                <span className="text-secondary-600">({product.reviews} avis)</span>
               </div>
 
               <div className="flex items-center space-x-4 mb-4">
@@ -561,14 +553,20 @@ const ProductPage: React.FC = () => {
                     <div className="flex items-center gap-3">
                       <div className="w-20 h-20 bg-white rounded-amazon overflow-hidden flex items-center justify-center">
                         {p.image ? (
-                          <img src={p.image} alt={p.name} className="w-full h-full object-contain" />
+                          <img
+                            src={p.image}
+                            alt={p.name}
+                            className="w-full h-full object-contain"
+                          />
                         ) : (
                           <div className="text-secondary-600 text-xs">Image</div>
                         )}
                       </div>
                       <div>
                         <div className="font-medium text-secondary-900">{p.name}</div>
-                        <div className="text-sm text-secondary-600">{Number(p.rating).toFixed(1)}</div>
+                        <div className="text-sm text-secondary-600">
+                          {Number(p.rating).toFixed(1)}
+                        </div>
                         <div className="text-primary-700 font-bold">{p.basePrice}€</div>
                       </div>
                     </div>
@@ -701,10 +699,14 @@ const ProductPage: React.FC = () => {
                 <p className="text-secondary-700 mb-3">{longDesc}</p>
                 <p className="text-secondary-700 mb-6">{product.description}</p>
                 <div className="rounded-amazon-lg border border-gray-200 p-4 bg-secondary-50">
-                  <div className="font-semibold text-secondary-900 mb-2">Conseils d’utilisation</div>
+                  <div className="font-semibold text-secondary-900 mb-2">
+                    Conseils d’utilisation
+                  </div>
                   <ul className="list-disc pl-5">
                     {tips.map((t, i) => (
-                      <li key={i} className="text-secondary-700">{t}</li>
+                      <li key={i} className="text-secondary-700">
+                        {t}
+                      </li>
                     ))}
                   </ul>
                 </div>

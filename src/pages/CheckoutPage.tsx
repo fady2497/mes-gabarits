@@ -603,7 +603,7 @@ const CheckoutPage: React.FC = () => {
                         />
                         <div>
                           <div className="font-medium text-secondary-900">Livraison standard</div>
-                          <div className="text-sm text-secondary-600">2-3 jours ouvrés</div>
+                          <div className="text-sm text-secondary-600">5-7 jours</div>
                         </div>
                       </div>
                       <div className="text-right">
@@ -860,7 +860,7 @@ const CheckoutPage: React.FC = () => {
 
                   <div className="flex items-center justify-between p-4 bg-secondary-50 rounded-amazon-lg">
                     <span className="text-secondary-700">Livraison estimée</span>
-                    <span className="font-medium text-secondary-900">Dans 2-3 jours ouvrés</span>
+                    <span className="font-medium text-secondary-900">Dans 5-7 jours</span>
                   </div>
 
                   <div className="flex items-center justify-between p-4 bg-secondary-50 rounded-amazon-lg">

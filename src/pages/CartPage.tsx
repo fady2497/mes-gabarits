@@ -343,7 +343,17 @@ const CartPage: React.FC = () => {
               </div>
 
               <div className="space-y-3 mb-6">
-                <Link to="/checkout" className="w-full btn-primary !py-4 text-lg">
+                {totalItems < 5 ? (
+                  <div className="p-4 bg-amber-50 text-amber-800 rounded-amazon border border-amber-200 mb-4">
+                    <p className="text-sm font-medium">
+                      Minimum de 5 gabarits requis pour commander.
+                    </p>
+                  </div>
+                ) : null}
+                <Link
+                  to={totalItems >= 5 ? '/checkout' : '#'}
+                  className={`w-full btn-primary !py-4 text-lg ${totalItems < 5 ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}`}
+                >
                   Passer la commande
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>

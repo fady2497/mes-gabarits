@@ -70,11 +70,10 @@ const HomePage: React.FC = () => {
         {/* Hero Content */}
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 bg-clip-text text-transparent animate-pulse">
-            Gabarits Premium
+            Gabarits Sellerie Premium
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-            Créez des gabarits professionnels pour motos, voitures, maisons et bateaux avec notre
-            outil de conception universel
+            Motifs pour capitons, précision, qualité et rapidité de traçage
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link to="/search?category=moto">
