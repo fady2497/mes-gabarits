@@ -156,87 +156,7 @@ const CartPage: React.FC = () => {
               ))}
             </div>
 
-            {/* Suggestions intelligentes */}
-            <div className="card-amazon p-6">
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h2 className="text-xl font-bold text-secondary-900 flex items-center">
-                    <Gift className="h-5 w-5 mr-2 text-primary-600" />
-                    Complétez votre achat
-                  </h2>
-                  <p className="text-secondary-600 text-sm">
-                    Produits fréquemment achetés ensemble
-                  </p>
-                </div>
-                <button onClick={addAllSuggestions} className="btn-secondary text-sm">
-                  Tout ajouter
-                </button>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {suggestedProducts.map((suggestion) => (
-                  <div
-                    key={suggestion.id}
-                    className={`border rounded-amazon p-4 transition-all ${
-                      selectedSuggestion.includes(suggestion.id)
-                        ? 'border-primary-500 bg-primary-50'
-                        : 'border-gray-200 hover:border-primary-300'
-                    }`}
-                  >
-                    <div className="flex items-start space-x-4">
-                      <div className="w-16 h-16 flex-shrink-0 bg-secondary-100 rounded-amazon overflow-hidden">
-                        <img
-                          src={suggestion.image}
-                          alt={suggestion.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-
-                      <div className="flex-1">
-                        <h4 className="font-medium text-secondary-900 mb-1">{suggestion.name}</h4>
-                        <div className="flex items-center space-x-2 mb-2">
-                          {/* 
-                            <div className="flex items-center">
-                              {[...Array(5)].map((_, i) => (
-                                <Star
-                                  key={i}
-                                  className={`h-3 w-3 ${
-                                    i < Math.floor(suggestion.rating)
-                                      ? 'text-yellow-400 fill-current'
-                                      : 'text-gray-300'
-                                  }`}
-                                />
-                              ))}
-                            </div>
-                            <span className="text-xs text-secondary-600">{suggestion.rating}</span>
-                          */}
-                        </div>
-
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <div className="font-bold text-primary-600">{suggestion.price}€</div>
-                            <div className="text-xs text-secondary-500">
-                              {suggestion.compatibility}% de compatibilité
-                            </div>
-                          </div>
-
-                          <button
-                            onClick={() => handleSuggestionToggle(suggestion.id)}
-                            className={`px-3 py-1 rounded-amazon text-sm font-medium transition-all ${
-                              selectedSuggestion.includes(suggestion.id)
-                                ? 'bg-primary-600 text-white'
-                                : 'bg-primary-100 text-primary-700 hover:bg-primary-200'
-                            }`}
-                          >
-                            {selectedSuggestion.includes(suggestion.id) ? '✓ Ajouté' : 'Ajouter'}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            {/* Suggestions intelligentes: Removed */}
           </div>
 
           {/* Récapitulatif de la commande */}
@@ -249,13 +169,6 @@ const CartPage: React.FC = () => {
                   <span>Sous-total</span>
                   <span>{totalPrice.toFixed(2)}€</span>
                 </div>
-
-                {selectedSuggestionsTotal > 0 && (
-                  <div className="flex justify-between text-secondary-700">
-                    <span>Suggestions sélectionnées</span>
-                    <span>+{selectedSuggestionsTotal.toFixed(2)}€</span>
-                  </div>
-                )}
 
                 <div className="flex justify-between text-secondary-700">
                   <span>Livraison</span>
