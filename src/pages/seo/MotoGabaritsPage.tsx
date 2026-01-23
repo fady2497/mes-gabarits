@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CATALOG } from '../../data/catalog';
+import { CATALOG, SERIES_BY_CATEGORY } from '../../data/catalog';
 import { Bike, CheckCircle, ArrowRight } from 'lucide-react';
 
 export default function MotoGabaritsPage() {
@@ -12,7 +12,7 @@ export default function MotoGabaritsPage() {
     }
   }, []);
 
-  const motoProducts = CATALOG.filter(p => p.category === 'moto' || p.series === 'A' || p.series === 'B' || p.series === 'C' || p.series === 'F' || p.series === 'M').slice(0, 8);
+  const motoProducts = CATALOG.filter((p) => SERIES_BY_CATEGORY.moto.includes(p.series)).slice(0, 8);
 
   return (
     <div className="min-h-screen bg-amazon-gray">
