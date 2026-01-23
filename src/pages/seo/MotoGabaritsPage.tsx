@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CATALOG } from '../data/catalog';
+import { CATALOG } from '../../data/catalog';
 import { Bike, CheckCircle, ArrowRight } from 'lucide-react';
 
 export default function MotoGabaritsPage() {

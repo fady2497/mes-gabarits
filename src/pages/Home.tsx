@@ -3,6 +3,7 @@ import HeroCarousel from '../components/HeroCarousel';
 import SeasonBanner from '../components/SeasonBanner';
 import ReassuranceBanner from '../components/ReassuranceBanner';
 import StoriesShowcase from '../components/StoriesShowcase';
+import Testimonials from '../components/Testimonials';
 import { useEffect, useRef, useState } from 'react';
 import { fetchAds, type AdsResponse } from '../services/adService';
 import { Bike, ArrowRight, Sparkles } from 'lucide-react';
@@ -45,7 +46,10 @@ export default function Home() {
               <strong>gain de temps considérable</strong> sur vos projets moto et auto.
             </p>
             <div className="mt-4">
-              <Link to="/gabarits-sellerie-moto" className="text-primary-600 hover:text-primary-700 font-medium">
+              <Link
+                to="/gabarits-sellerie-moto"
+                className="text-primary-600 hover:text-primary-700 font-medium"
+              >
                 Découvrez nos gabarits de sellerie moto professionnels
               </Link>
             </div>
