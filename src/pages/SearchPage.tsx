@@ -247,8 +247,8 @@ export default function SearchPage() {
             <option value="series_asc">Tri: Série A→M</option>
             <option value="price_asc">Prix ↑</option>
             <option value="price_desc">Prix ↓</option>
-            <option value="rating_desc">Note ↓</option>
-            <option value="rating_asc">Note ↑</option>
+            {/* <option value="rating_desc">Note ↓</option>
+            <option value="rating_asc">Note ↑</option> */}
             <option value="popularity">Popularité</option>
             <option value="date_desc">Date ↓</option>
             <option value="date_asc">Date ↑</option>

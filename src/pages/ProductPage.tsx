@@ -652,8 +652,8 @@ const ProductPage: React.FC = () => {
                   <div>
                     <div className="font-medium text-secondary-900">{product.seller.name}</div>
                     <div className="flex items-center space-x-1 text-sm text-secondary-600">
-                      <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                      <span>{product.seller.rating}</span>
+                      {/* <Star className="h-4 w-4 text-yellow-400 fill-current" />
+                      <span>{product.seller.rating}</span> */}
                       <span>({product.seller.reviews} ventes)</span>
                     </div>
                   </div>

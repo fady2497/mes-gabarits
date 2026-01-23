@@ -262,19 +262,21 @@ const CartPage: React.FC = () => {
                       <div className="flex-1">
                         <h4 className="font-medium text-secondary-900 mb-1">{suggestion.name}</h4>
                         <div className="flex items-center space-x-2 mb-2">
-                          <div className="flex items-center">
-                            {[...Array(5)].map((_, i) => (
-                              <Star
-                                key={i}
-                                className={`h-3 w-3 ${
-                                  i < Math.floor(suggestion.rating)
-                                    ? 'text-yellow-400 fill-current'
-                                    : 'text-gray-300'
-                                }`}
-                              />
-                            ))}
-                          </div>
-                          <span className="text-xs text-secondary-600">{suggestion.rating}</span>
+                          {/* 
+                            <div className="flex items-center">
+                              {[...Array(5)].map((_, i) => (
+                                <Star
+                                  key={i}
+                                  className={`h-3 w-3 ${
+                                    i < Math.floor(suggestion.rating)
+                                      ? 'text-yellow-400 fill-current'
+                                      : 'text-gray-300'
+                                  }`}
+                                />
+                              ))}
+                            </div>
+                            <span className="text-xs text-secondary-600">{suggestion.rating}</span>
+                          */}
                         </div>
 
                         <div className="flex items-center justify-between">
