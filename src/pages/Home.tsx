@@ -188,6 +188,7 @@ export default function Home() {
             </div>
           </div>
           <StoriesShowcase />
+          <Testimonials />
         </div>
       </div>
     </div>
