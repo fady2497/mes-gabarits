@@ -66,7 +66,7 @@ const ProductPage: React.FC = () => {
       shipping: {
         free: true,
         estimated: '5-7 jours',
-        express: !(catalogProduct as any).specialOrder
+        express: true
       },
       warranty: 'Artisan'
     };
