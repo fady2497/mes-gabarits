@@ -44,6 +44,11 @@ export default function Home() {
               <strong>motifs parfaits</strong> (hexagone, losange, curve...) et un{' '}
               <strong>gain de temps considérable</strong> sur vos projets moto et auto.
             </p>
+            <div className="mt-4">
+              <Link to="/gabarits-sellerie-moto" className="text-primary-600 hover:text-primary-700 font-medium">
+                Découvrez nos gabarits de sellerie moto professionnels
+              </Link>
+            </div>
             <div className="mt-4 flex flex-wrap gap-2 justify-center md:justify-start">
               <span className="px-3 py-1 bg-amber-50 text-amber-800 rounded-full text-sm font-medium">
                 ✨ Précision millimétrique
