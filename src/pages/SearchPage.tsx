@@ -29,6 +29,12 @@ export default function SearchPage() {
   const [query, setQuery] = useState('');
   const [sp, setSp] = useSearchParams();
   const currentCat = sp.get('category') || 'moto';
+  
+  // SEO Dynamique simple
+  React.useEffect(() => {
+    document.title = `Catalogue ${currentCat === 'moto' ? 'Moto' : currentCat === 'auto' ? 'Auto' : ''} | Gabarits.fr`;
+  }, [currentCat]);
+
   const legacy = sp.get('legacy') === '1';
   const [selectedSeries, setSelectedSeries] = useState<string[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
