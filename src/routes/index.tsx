@@ -22,6 +22,7 @@ import ClientSpacePage from '../pages/ClientSpacePage';
 import MentionsLegales from '../pages/legal/MentionsLegales';
 import CGV from '../pages/legal/CGV';
 import PolitiqueConfidentialite from '../pages/legal/PolitiqueConfidentialite';
+import AboutPage from '../pages/AboutPage';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -29,6 +30,7 @@ const AppRoutes: React.FC = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="about" element={<AboutPage />} />
           <Route path="search" element={<SearchPage />} />
           {/* route createur retirée */}
           <Route path="mes-gabarits" element={<MyGabarits />} />

@@ -714,14 +714,21 @@ const ProductPage: React.FC = () => {
                 <h3 className="text-lg font-semibold text-secondary-900 mb-4">
                   Caractéristiques principales
                 </h3>
-                <ul className="space-y-2">
-                  {product.features.map((feature, index) => (
-                    <li key={index} className="flex items-center space-x-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
-                      <span className="text-secondary-700">{feature}</span>
-                    </li>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  {[
+                    'Matériau : Polypropylène indéchirable',
+                    'Épaisseur : 0.8mm (flexible & robuste)',
+                    'Traçage : Net et précis',
+                    'Durabilité : Réutilisable à l\'infini',
+                    'Origine : Fabriqué en France 🇫🇷',
+                    'Usage : Pro & Amateur'
+                  ].map((feature, index) => (
+                    <div key={index} className="flex items-center space-x-2">
+                      <CheckCircle className="h-4 w-4 text-green-500 shrink-0" />
+                      <span className="text-secondary-700 text-sm">{feature}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             )}
 

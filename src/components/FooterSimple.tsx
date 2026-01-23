@@ -68,6 +68,21 @@ export default function FooterSimple() {
             </div>
           </div>
           <div>
+            <div className="font-semibold mb-2">Gabarits.fr</div>
+            <ul className="text-slate-300 space-y-2 text-sm">
+              <li>
+                <Link to="/about" className="hover:text-white transition-colors">
+                  Notre Histoire
+                </Link>
+              </li>
+              <li>
+                <Link to="/search" className="hover:text-white transition-colors">
+                  Catalogue
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
             <div className="font-semibold mb-2">Nos Séries</div>
             <ul className="text-slate-300 space-y-1 text-sm">
               <li>
