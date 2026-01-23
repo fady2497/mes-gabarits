@@ -24,6 +24,7 @@ import CGV from '../pages/legal/CGV';
 import PolitiqueConfidentialite from '../pages/legal/PolitiqueConfidentialite';
 import AboutPage from '../pages/AboutPage';
 import MotoGabaritsPage from '../pages/seo/MotoGabaritsPage';
+import AutoGabaritsPage from '../pages/seo/AutoGabaritsPage';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -31,9 +32,10 @@ const AppRoutes: React.FC = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="gabarits-sellerie-moto" element={<MotoGabaritsPage />} />
-          <Route path="search" element={<SearchPage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="gabarits-sellerie-moto" element={<MotoGabaritsPage />} />
+        <Route path="gabarits-sellerie-auto" element={<AutoGabaritsPage />} />
+        <Route path="search" element={<SearchPage />} />
           {/* route createur retirée */}
           <Route path="mes-gabarits" element={<MyGabarits />} />
           <Route path="contact" element={<ContactPage />} />

@@ -85,6 +85,11 @@ export default function FooterSimple() {
                   Sellerie Moto
                 </Link>
               </li>
+              <li>
+                <Link to="/gabarits-sellerie-auto" className="hover:text-white transition-colors">
+                  Sellerie Auto
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
