@@ -60,7 +60,7 @@ export default function Home() {
         {/* Exemples de gabarits */}
         <div className="mt-6">
           <div className="flex items-center justify-between mb-3">
-            <div className="font-extrabold text-lg sm:text-xl">Exemples de gabarits</div>
+            <h2 className="font-extrabold text-lg sm:text-xl">Exemples de gabarits</h2>
             <Link to="/search" className="text-primary-600 hover:text-primary-700 text-sm">
               Voir le catalogue
             </Link>

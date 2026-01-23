@@ -2,12 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://gabarits.fr/</loc>
-    <lastmod>2025-12-11T09:05:23.984Z</lastmod>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://gabarits.fr/images/gabarit-sellerie-serie-g1-special-nda-gabaritsfr.png</image:loc>
-      <image:title>gabarit sellerie serie g1 special nda gabaritsfr</image:title>
-    </image:image>
+  </url>
+  <url>
+    <loc>https://gabarits.fr/search?category=moto</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://gabarits.fr/search?category=auto</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://gabarits.fr/about</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gabarits.fr/contact</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gabarits.fr/legal/mentions-legales</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://gabarits.fr/legal/cgv</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
     <image:image>
       <image:loc>https://gabarits.fr/images/gabarit-sellerie-serie-g10-special-nda-gabaritsfr.png</image:loc>
       <image:title>gabarit sellerie serie g10 special nda gabaritsfr</image:title>
