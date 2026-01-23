@@ -52,31 +52,65 @@ export default function StoriesShowcase({ images = [] as MediaItem[] }) {
   };
 
   return (
-    <div id="exemples-stories" className="mt-8" onKeyDown={onKey} tabIndex={0}>
-      <div className="text-2xl font-bold text-secondary-900 mb-4">Exemples en stories</div>
-      <div className="flex items-center gap-5 overflow-x-auto pb-4">
-        {items.map((img, i) => (
-          <button
-            key={`${img.src}-${i}`}
-            className="shrink-0 rounded-full p-1 bg-gradient-to-tr from-amber-500 to-orange-600 hover:scale-[1.03] transition"
-            onClick={() => {
-              setIndex(i);
-              setOpen(true);
-            }}
-          >
-            <div className="w-32 h-32 rounded-full overflow-hidden bg-white">
-              <img
-                src={encodeURI(img.src)}
-                alt={img.title || 'story'}
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
+    <div id="exemples-stories" className="mt-12 mb-12" onKeyDown={onKey} tabIndex={0}>
+      <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 relative overflow-hidden">
+        {/* Décoration d'arrière-plan */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-amber-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-50 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-orange-50 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2 opacity-50 pointer-events-none"></div>
+
+        <div className="relative z-10">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-3xl font-bold text-secondary-900 flex items-center gap-3">
+                <span className="bg-gradient-to-r from-amber-500 to-orange-600 text-white p-2 rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </span>
+                Exemples en stories
+              </h2>
+              <p className="text-secondary-600 mt-2 ml-14">Découvrez les réalisations faites avec nos gabarits</p>
             </div>
-            <div className="mt-2 text-center text-sm text-secondary-800 w-32 truncate">
-              {img.title || 'Story'}
+            
+            <div className="hidden sm:flex space-x-2">
+              <div className="h-2 w-2 rounded-full bg-amber-500"></div>
+              <div className="h-2 w-2 rounded-full bg-amber-300"></div>
+              <div className="h-2 w-2 rounded-full bg-amber-100"></div>
             </div>
-          </button>
-        ))}
+          </div>
+
+          <div className="flex items-center gap-8 overflow-x-auto pb-6 pt-2 px-4 scrollbar-hide">
+            {items.map((img, i) => (
+              <button
+                key={`${img.src}-${i}`}
+                className="group shrink-0 flex flex-col items-center transition-all duration-300 hover:-translate-y-2 focus:outline-none"
+                onClick={() => {
+                  setIndex(i);
+                  setOpen(true);
+                }}
+              >
+                <div className="relative p-[3px] rounded-full bg-gradient-to-tr from-amber-400 via-orange-500 to-amber-600 shadow-md group-hover:shadow-xl group-hover:shadow-amber-200 transition-all duration-300">
+                  <div className="bg-white p-[2px] rounded-full">
+                    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden relative">
+                      <img
+                        src={encodeURI(img.src)}
+                        alt={img.title || 'story'}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-3 text-center w-32">
+                  <span className="text-sm font-semibold text-secondary-800 group-hover:text-primary-700 transition-colors block truncate">
+                    {img.title || 'Story'}
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       {open && (
