@@ -80,6 +80,11 @@ export default function FooterSimple() {
                   Catalogue
                 </Link>
               </li>
+              <li>
+                <Link to="/gabarits-sellerie-moto" className="hover:text-white transition-colors">
+                  Sellerie Moto
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
