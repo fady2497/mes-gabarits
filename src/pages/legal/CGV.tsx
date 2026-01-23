@@ -7,80 +7,71 @@ const CGV: React.FC = () => {
       
       <div className="bg-white p-8 rounded-amazon-lg shadow-sm border border-gray-200 space-y-8 text-secondary-700">
         <section>
-          <h2 className="text-xl font-bold text-secondary-900 mb-4">1. Objet</h2>
+          <p className="leading-relaxed mb-4">
+            Les présentes Conditions Générales de Vente (CGV) régissent les ventes de produits proposées sur le site <strong>gabarits.fr</strong>.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-bold text-secondary-900 mb-4">1. Produits</h2>
           <p className="leading-relaxed">
-            Les présentes conditions régissent les ventes de gabarits de sellerie par l'entreprise <strong>Gabarits.fr</strong>.
+            Les produits proposés sont des gabarits destinés à un usage professionnel ou artisanal, principalement dans le domaine de la sellerie auto et moto.
+            Chaque produit est décrit avec le plus grand soin. Les photographies sont non contractuelles.
           </p>
         </section>
 
         <section>
           <h2 className="text-xl font-bold text-secondary-900 mb-4">2. Prix</h2>
           <p className="leading-relaxed">
-            Les prix de nos produits sont indiqués en euros toutes taxes comprises (TTC), sauf indication contraire et hors frais de traitement et d'expédition.
-            Toutes les commandes quelle que soit leur origine sont payables en euros.
+            Les prix sont indiqués en euros (€), toutes taxes comprises (TTC) ou hors taxes (HT) selon le statut du vendeur.
+            Gabarits.fr se réserve le droit de modifier ses prix à tout moment, sans effet rétroactif.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-secondary-900 mb-4">3. Commandes</h2>
+          <h2 className="text-xl font-bold text-secondary-900 mb-4">3. Commande</h2>
           <p className="leading-relaxed">
-            Vous pouvez passer commande sur Internet via le site <strong>gabarits.fr</strong>.
-            Les informations contractuelles sont présentées en langue française et feront l'objet d'une confirmation au plus tard au moment de la validation de votre commande.
+            Toute commande passée sur le site implique l’acceptation pleine et entière des présentes CGV.
+            Une confirmation de commande est envoyée par email après validation du paiement.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-secondary-900 mb-4">4. Validation de votre commande</h2>
+          <h2 className="text-xl font-bold text-secondary-900 mb-4">4. Paiement</h2>
           <p className="leading-relaxed">
-            Toute commande figurant sur le site Internet suppose l'adhésion aux présentes Conditions Générales.
-            Toute confirmation de commande entraîne votre adhésion pleine et entière aux présentes conditions générales de vente, sans exception ni réserve.
+            Le paiement est exigible immédiatement à la commande.
+            Les paiements sont sécurisés via les solutions proposées sur le site (carte bancaire, PayPal ou autre).
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-secondary-900 mb-4">5. Paiement</h2>
+          <h2 className="text-xl font-bold text-secondary-900 mb-4">5. Livraison</h2>
           <p className="leading-relaxed">
-            Le fait de valider votre commande implique pour vous l'obligation de payer le prix indiqué.
-            Le règlement de vos achats s'effectue par carte bancaire grâce au système sécurisé.
+            Les produits sont livrés à l’adresse indiquée par le client lors de la commande.
+            Les délais de livraison sont indiqués à titre indicatif et peuvent varier selon la nature du produit (fabrication, stock, transport).
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-secondary-900 mb-4">6. Rétractation</h2>
+          <h2 className="text-xl font-bold text-secondary-900 mb-4">6. Droit de rétractation</h2>
           <p className="leading-relaxed">
-            Conformément aux dispositions de l'article L.121-21 du Code de la Consommation, vous disposez d'un délai de rétractation de 14 jours à compter de la réception de vos produits pour exercer votre droit de rétractation sans avoir à justifier de motifs ni à payer de pénalité.
-            Les retours sont à effectuer dans leur état d'origine et complets (emballage, accessoires, notice). Dans ce cadre, votre responsabilité est engagée. Tout dommage subi par le produit à cette occasion peut être de nature à faire échec au droit de rétractation.
+            Conformément à la législation en vigueur, le droit de rétractation ne s’applique pas aux produits personnalisés ou fabriqués sur mesure.
+            Pour les produits standards, le client dispose d’un délai légal de rétractation, sous réserve que le produit soit retourné en parfait état.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-secondary-900 mb-4">7. Disponibilité</h2>
+          <h2 className="text-xl font-bold text-secondary-900 mb-4">7. Responsabilité</h2>
           <p className="leading-relaxed">
-            Nos produits sont proposés tant qu'ils sont visibles sur le site et dans la limite des stocks disponibles.
-            Pour les produits non stockés, nos offres sont valables sous réserve de disponibilité chez nos fournisseurs.
+            Gabarits.fr ne saurait être tenu responsable d’une mauvaise utilisation des produits ou d’une incompatibilité avec un usage non prévu.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-secondary-900 mb-4">8. Livraison</h2>
+          <h2 className="text-xl font-bold text-secondary-900 mb-4">8. Droit applicable</h2>
           <p className="leading-relaxed">
-            Les produits sont livrés à l'adresse de livraison indiquée au cours du processus de commande, dans le délai indiqué sur la page de validation de la commande (généralement 5 à 7 jours).
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-bold text-secondary-900 mb-4">9. Garantie</h2>
-          <p className="leading-relaxed">
-            Tous nos produits bénéficient de la garantie légale de conformité et de la garantie des vices cachés, prévues par les articles 1641 et suivants du Code civil.
-            En cas de non-conformité d'un produit vendu, il pourra être retourné, échangé ou remboursé.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-bold text-secondary-900 mb-4">10. Droit applicable en cas de litiges</h2>
-          <p className="leading-relaxed">
-            La langue du présent contrat est la langue française. Les présentes conditions de vente sont soumises à la loi française.
-            En cas de litige, les tribunaux français seront les seuls compétents.
+            Les présentes CGV sont soumises au droit français.
+            En cas de litige, une solution amiable sera privilégiée avant toute action judiciaire.
           </p>
         </section>
       </div>

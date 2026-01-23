@@ -7,53 +7,54 @@ const PolitiqueConfidentialite: React.FC = () => {
       
       <div className="bg-white p-8 rounded-amazon-lg shadow-sm border border-gray-200 space-y-8 text-secondary-700">
         <section>
-          <h2 className="text-xl font-bold text-secondary-900 mb-4">1. Collecte de l’information</h2>
-          <p className="leading-relaxed">
-            Nous recueillons des informations lorsque vous vous inscrivez sur notre site, lorsque vous vous connectez à votre compte, faites un achat, participez à un concours, et / ou lorsque vous vous déconnectez. 
-            Les informations recueillies incluent votre nom, votre adresse e-mail, numéro de téléphone, et / ou carte de crédit.
+          <p className="leading-relaxed mb-4">
+            Le site <strong>gabarits.fr</strong> attache une grande importance à la protection des données personnelles de ses utilisateurs.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-secondary-900 mb-4">2. Utilisation des informations</h2>
+          <h2 className="text-xl font-bold text-secondary-900 mb-4">1. Données collectées</h2>
           <p className="leading-relaxed">
-            Toutes les informations que nous recueillons auprès de vous peuvent être utilisées pour :
+            Les données susceptibles d’être collectées sont :
           </p>
           <ul className="list-disc pl-5 mt-2 space-y-1">
-            <li>Personnaliser votre expérience et répondre à vos besoins individuels</li>
-            <li>Fournir un contenu publicitaire personnalisé</li>
-            <li>Améliorer notre site Web</li>
-            <li>Améliorer le service client et vos besoins de prise en charge</li>
-            <li>Vous contacter par e-mail</li>
-            <li>Administrer un concours, une promotion, ou une enquête</li>
+            <li>Nom et prénom</li>
+            <li>Adresse email</li>
+            <li>Adresse postale</li>
+            <li>Informations nécessaires au traitement des commandes</li>
           </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-bold text-secondary-900 mb-4">3. Confidentialité du commerce en ligne</h2>
-          <p className="leading-relaxed">
-            Nous sommes les seuls propriétaires des informations recueillies sur ce site. Vos informations personnelles ne seront pas vendues, échangées, transférées, ou données à une autre société pour n’importe quelle raison, sans votre consentement, en dehors de ce qui est nécessaire pour répondre à une demande et / ou une transaction, comme par exemple pour expédier une commande.
+          <p className="leading-relaxed mt-2">
+            Ces données sont collectées uniquement dans le cadre de l’utilisation du site et des commandes.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-secondary-900 mb-4">4. Divulgation à des tiers</h2>
+          <h2 className="text-xl font-bold text-secondary-900 mb-4">2. Utilisation des données</h2>
           <p className="leading-relaxed">
-            Nous ne vendons, n’échangeons et ne transférons pas vos informations personnelles identifiables à des tiers. Cela ne comprend pas les tierce parties de confiance qui nous aident à exploiter notre site Web ou à mener nos affaires, tant que ces parties conviennent de garder ces informations confidentielles.
+            Les données collectées sont utilisées pour :
+          </p>
+          <ul className="list-disc pl-5 mt-2 space-y-1">
+            <li>Le traitement des commandes</li>
+            <li>La gestion de la relation client</li>
+            <li>L’amélioration des services proposés</li>
+          </ul>
+          <p className="leading-relaxed mt-2">
+            Aucune donnée n’est vendue ou cédée à des tiers.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-secondary-900 mb-4">5. Protection des informations</h2>
+          <h2 className="text-xl font-bold text-secondary-900 mb-4">3. Sécurité</h2>
           <p className="leading-relaxed">
-            Nous mettons en œuvre une variété de mesures de sécurité pour préserver la sécurité de vos informations personnelles. Nous utilisons un cryptage à la pointe de la technologie pour protéger les informations sensibles transmises en ligne. Nous protégeons également vos informations hors ligne. Seuls les employés qui ont besoin d’effectuer un travail spécifique (par exemple, la facturation ou le service à la clientèle) ont accès aux informations personnelles identifiables.
+            Gabarits.fr met en œuvre toutes les mesures nécessaires pour assurer la sécurité et la confidentialité des données personnelles.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-secondary-900 mb-4">6. Consentement</h2>
+          <h2 className="text-xl font-bold text-secondary-900 mb-4">4. Droits des utilisateurs</h2>
           <p className="leading-relaxed">
-            En utilisant notre site, vous consentez à notre politique de confidentialité.
+            Conformément au Règlement Général sur la Protection des Données (RGPD), l’utilisateur dispose d’un droit d’accès, de rectification et de suppression de ses données.
+            Toute demande peut être adressée par email à : [email de contact].
           </p>
         </section>
       </div>
