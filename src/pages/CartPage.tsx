@@ -28,79 +28,12 @@ interface SuggestedProduct {
 
 const CartPage: React.FC = () => {
   const { items, removeItem, updateQuantity, totalItems, totalPrice } = useCartStore();
-  const [selectedSuggestion, setSelectedSuggestion] = useState<string[]>([]);
-
-  // Produits suggérés intelligents (frequently bought together)
-  const suggestedProducts: SuggestedProduct[] = [
-    {
-      id: 's1',
-      name: 'Coque de protection iPhone 15 Pro Max',
-      price: 29.99,
-      image: 'https://images.unsplash.com/photo-1601593346740-925612772716?w=200&h=200&fit=crop',
-      rating: 4.5,
-      category: 'Accessoires',
-      compatibility: 95
-    },
-    {
-      id: 's2',
-      name: 'Chargeur MagSafe 15W',
-      price: 45.0,
-      image: 'https://images.unsplash.com/photo-1609592806596-4d8b5b5e7f0a?w=200&h=200&fit=crop',
-      rating: 4.7,
-      category: 'Chargeurs',
-      compatibility: 88
-    },
-    {
-      id: 's3',
-      name: 'Écouteurs AirPods Pro 2',
-      price: 279.0,
-      image: 'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=200&h=200&fit=crop',
-      rating: 4.8,
-      category: 'Audio',
-      compatibility: 92
-    },
-    {
-      id: 's4',
-      name: 'Câble USB-C 2m',
-      price: 19.99,
-      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop',
-      rating: 4.3,
-      category: 'Câbles',
-      compatibility: 100
-    }
-  ];
 
   const shippingCost = totalPrice > 50 ? 0 : 5.99;
   const taxAmount = totalPrice * 0.2; // 20% TVA
   const finalTotal = totalPrice + shippingCost + taxAmount;
 
   const handleQuantityChange = (productId: string, newQuantity: number) => {
-    if (newQuantity <= 0) {
-      removeItem(productId);
-    } else {
-      updateQuantity(productId, newQuantity);
-    }
-  };
-
-  const handleSuggestionToggle = (suggestionId: string) => {
-    setSelectedSuggestion((prev) =>
-      prev.includes(suggestionId)
-        ? prev.filter((id) => id !== suggestionId)
-        : [...prev, suggestionId]
-    );
-  };
-
-  const addAllSuggestions = () => {
-    // Logique pour ajouter toutes les suggestions au panier
-    console.log('Ajouter toutes les suggestions');
-  };
-
-  const selectedSuggestionsTotal = selectedSuggestion.reduce((total, id) => {
-    const suggestion = suggestedProducts.find((p) => p.id === id);
-    return total + (suggestion?.price || 0);
-  }, 0);
-
-  if (items.length === 0) {
     return (
       <div className="min-h-screen bg-amazon-gray flex items-center justify-center">
         <div className="text-center">
@@ -114,7 +47,7 @@ const CartPage: React.FC = () => {
         </div>
       </div>
     );
-  }
+  };
 
   return (
     <div className="min-h-screen bg-amazon-gray">
@@ -339,7 +272,7 @@ const CartPage: React.FC = () => {
                 <div className="border-t border-gray-200 pt-4">
                   <div className="flex justify-between text-lg font-bold text-secondary-900">
                     <span>Total</span>
-                    <span>{(finalTotal + selectedSuggestionsTotal).toFixed(2)}€</span>
+                    <span>{finalTotal.toFixed(2)}€</span>
                   </div>
                 </div>
               </div>
