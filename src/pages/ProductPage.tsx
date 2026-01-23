@@ -68,9 +68,31 @@ const ProductPage: React.FC = () => {
         estimated: '5-7 jours',
         express: true
       },
-      warranty: 'Artisan'
+      warranty: '2 ans',
+      faq: [
+        {
+          q: 'Comment utiliser ce gabarit ?',
+          a: 'Posez le gabarit sur votre mousse ou matière, tracez les contours avec un stylo argent ou une craie, puis cousez en suivant les lignes.'
+        },
+        {
+          q: 'Est-ce réutilisable ?',
+          a: 'Oui, nos gabarits en polypropylène sont conçus pour durer et servir sur des centaines de projets.'
+        },
+        {
+          q: 'Quelle aiguille utiliser ?',
+          a: "Nous recommandons une aiguille de taille 90 à 110 selon l'épaisseur de votre fil et matière."
+        }
+      ]
     };
   }, [catalogProduct]);
+
+  // SEO Dynamique
+  React.useEffect(() => {
+    if (product) {
+      document.title = `${product.name} | Gabarits.fr`;
+    }
+  }, [product]);
+
   const longDesc = useMemo(() => {
     if (!catalogProduct) return '';
     const s = catalogProduct.series;
@@ -719,7 +741,7 @@ const ProductPage: React.FC = () => {
                     'Matériau : Polypropylène indéchirable',
                     'Épaisseur : 0.8mm (flexible & robuste)',
                     'Traçage : Net et précis',
-                    'Durabilité : Réutilisable à l\'infini',
+                    "Durabilité : Réutilisable à l'infini",
                     'Origine : Fabriqué en France 🇫🇷',
                     'Usage : Pro & Amateur'
                   ].map((feature, index) => (

@@ -3,6 +3,11 @@ import { CONTACT, WHATSAPP_URL } from '../constants/contact';
 import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
 
 export default function ContactPage() {
+  // SEO
+  React.useEffect(() => {
+    document.title = 'Contactez-nous | Gabarits.fr';
+  }, []);
+
   return (
     <div className="container-amazon py-10">
       <div className="rounded-2xl bg-gradient-to-r from-orange-500 to-amber-600 text-white p-6 mb-6 flex items-center justify-between">

@@ -3,6 +3,11 @@ import { Award, PenTool, Heart, ShieldCheck, Truck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function AboutPage() {
+  // SEO
+  React.useEffect(() => {
+    document.title = 'Notre Histoire & Savoir-Faire | Gabarits.fr';
+  }, []);
+
   return (
     <div className="min-h-screen bg-amazon-gray">
       {/* Hero Section */}
