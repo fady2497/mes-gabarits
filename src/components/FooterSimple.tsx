@@ -190,8 +190,14 @@ export default function FooterSimple() {
             </div>
           </div>
         </div>
-        <div className="border-t border-slate-700 mt-6 pt-4 text-center text-slate-300 text-xs">
-          © {new Date().getFullYear()} Gabarits.fr – Tous droits réservés | CGV | Mentions légales
+        <div className="border-t border-slate-700 mt-6 pt-4 flex flex-col md:flex-row items-center justify-center gap-4 text-slate-400 text-xs">
+          <span>© {new Date().getFullYear()} Gabarits.fr – Tous droits réservés</span>
+          <span className="hidden md:inline">•</span>
+          <Link to="/legal/cgv" className="hover:text-white transition-colors">CGV</Link>
+          <span className="hidden md:inline">•</span>
+          <Link to="/legal/mentions-legales" className="hover:text-white transition-colors">Mentions légales</Link>
+          <span className="hidden md:inline">•</span>
+          <Link to="/legal/confidentialite" className="hover:text-white transition-colors">Politique de confidentialité</Link>
         </div>
       </div>
     </footer>

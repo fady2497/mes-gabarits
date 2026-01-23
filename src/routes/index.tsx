@@ -19,6 +19,9 @@ import ProductsAdmin from '../pages/admin/ProductsAdmin';
 import AdminGuard from '../components/AdminGuard';
 import AuthPage from '../pages/AuthPage';
 import ClientSpacePage from '../pages/ClientSpacePage';
+import MentionsLegales from '../pages/legal/MentionsLegales';
+import CGV from '../pages/legal/CGV';
+import PolitiqueConfidentialite from '../pages/legal/PolitiqueConfidentialite';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -33,6 +36,9 @@ const AppRoutes: React.FC = () => {
           <Route path="support/livraison" element={<LivraisonPage />} />
           <Route path="support/faq" element={<FAQPage />} />
           <Route path="support/garantie" element={<GarantiePage />} />
+          <Route path="legal/mentions-legales" element={<MentionsLegales />} />
+          <Route path="legal/cgv" element={<CGV />} />
+          <Route path="legal/confidentialite" element={<PolitiqueConfidentialite />} />
           <Route path="admin/ads" element={<AdsAdmin />} />
           <Route
             path="admin/orders"

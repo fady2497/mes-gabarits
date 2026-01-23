@@ -28,6 +28,9 @@ export default function Home() {
       <div className="container-amazon py-6">
         <SeasonBanner banner={ads.banner} />
         <HeroCarousel />
+        <div className="mt-8">
+          <ReassuranceBanner />
+        </div>
         {/* À propos */}
         <div className="mt-6">
           <div className="rounded-2xl border border-[var(--border-soft)] bg-white p-4 sm:p-5">
