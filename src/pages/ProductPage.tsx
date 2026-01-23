@@ -638,13 +638,7 @@ const ProductPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-center space-x-3">
-                <RotateCcw className="h-6 w-6 text-primary-600" />
-                <div>
-                  <div className="font-medium text-secondary-900">Retour gratuit</div>
-                  <div className="text-sm text-secondary-600">30 jours</div>
-                </div>
-              </div>
+              {/* Retour gratuit section removed */}
             </div>
 
             {/* Vendeur */}
