@@ -29,7 +29,7 @@ interface SuggestedProduct {
 const CartPage: React.FC = () => {
   const { items, removeItem, updateQuantity, totalItems, totalPrice } = useCartStore();
 
-  const shippingCost = totalPrice > 50 ? 0 : 5.99;
+  const shippingCost = 0; // Livraison toujours gratuite
   const taxAmount = totalPrice * 0.2; // 20% TVA
   const finalTotal = totalPrice + shippingCost + taxAmount;
 
@@ -155,8 +155,6 @@ const CartPage: React.FC = () => {
                 </div>
               ))}
             </div>
-
-            {/* Suggestions intelligentes: Removed */}
           </div>
 
           {/* Récapitulatif de la commande */}
@@ -172,9 +170,7 @@ const CartPage: React.FC = () => {
 
                 <div className="flex justify-between text-secondary-700">
                   <span>Livraison</span>
-                  <span className={shippingCost === 0 ? 'text-green-600 font-medium' : ''}>
-                    {shippingCost === 0 ? 'Gratuite' : `${shippingCost.toFixed(2)}€`}
-                  </span>
+                  <span className="text-green-600 font-medium">Gratuite</span>
                 </div>
 
                 <div className="flex justify-between text-secondary-700">

@@ -65,7 +65,7 @@ const ProductPage: React.FC = () => {
       specifications: {},
       shipping: {
         free: true,
-        estimated: (catalogProduct as any).specialOrder ? '7-10 jours ouvrés' : '2-3 jours ouvrés',
+        estimated: '5-7 jours',
         express: !(catalogProduct as any).specialOrder
       },
       warranty: 'Artisan'
@@ -619,7 +619,7 @@ const ProductPage: React.FC = () => {
                 <Truck className="h-6 w-6 text-primary-600" />
                 <div>
                   <div className="font-medium text-secondary-900">Livraison gratuite</div>
-                  <div className="text-sm text-secondary-600">{product.shipping.estimated}</div>
+                  <div className="text-sm text-secondary-600">5-7 jours</div>
                 </div>
               </div>
 
