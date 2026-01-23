@@ -1,0 +1,13 @@
+{
+  "$id": "https://gabarits.fr/schemas/tsconfig.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Local TSConfig Schema (minimal)",
+  "type": "object",
+  "properties": {
+    "compilerOptions": { "type": "object" },
+    "include": { "type": ["array", "string"] },
+    "exclude": { "type": ["array", "string"] },
+    "references": { "type": "array" }
+  },
+  "additionalProperties": true
+}

@@ -87,6 +87,19 @@ const ProductPage: React.FC = () => {
     };
   }, [catalogProduct]);
 
+  // Dimensions personnalisées pour voiture/maison/bateau (ou tout autre)
+  const [customWidth, setCustomWidth] = useState(260);
+  const [customHeight, setCustomHeight] = useState(180);
+  const baselineArea = 260 * 180;
+  const dynamicPrice = useMemo(() => {
+    if (!catalogProduct) return 0;
+    if (usage === 'moto') return catalogProduct.basePrice;
+    const area = Math.max(1, customWidth * customHeight);
+    const factor = area / baselineArea;
+    const base = catalogProduct.basePrice;
+    return Math.max(1, Math.round(base * factor));
+  }, [catalogProduct, usage, customWidth, customHeight]);
+
   // SEO Dynamique
   useEffect(() => {
     if (!product) return;
@@ -99,11 +112,21 @@ const ProductPage: React.FC = () => {
     setMeta('property', 'og:description', desc);
     setMeta('property', 'og:url', url);
     setMeta('property', 'og:type', 'product');
-    setMeta('property', 'og:image', product.images?.[0] || 'https://gabarits.fr/images/gabarit-sellerie-serie-g1-special-nda-gabaritsfr.png');
+    setMeta(
+      'property',
+      'og:image',
+      product.images?.[0] ||
+        'https://gabarits.fr/images/gabarit-sellerie-serie-g1-special-nda-gabaritsfr.png'
+    );
     setMeta('name', 'twitter:card', 'summary_large_image');
     setMeta('name', 'twitter:title', `${product.name} | Gabarits.fr`);
     setMeta('name', 'twitter:description', desc);
-    setMeta('name', 'twitter:image', product.images?.[0] || 'https://gabarits.fr/images/gabarit-sellerie-serie-g1-special-nda-gabaritsfr.png');
+    setMeta(
+      'name',
+      'twitter:image',
+      product.images?.[0] ||
+        'https://gabarits.fr/images/gabarit-sellerie-serie-g1-special-nda-gabaritsfr.png'
+    );
     const price = dynamicPrice || product.price;
     setJsonLd({
       '@context': 'https://schema.org',
@@ -262,18 +285,6 @@ const ProductPage: React.FC = () => {
     ).slice(0, 4);
   }, [catalogProduct, categoryKey]);
 
-  // Dimensions personnalisées pour voiture/maison/bateau (ou tout autre)
-  const [customWidth, setCustomWidth] = useState(260);
-  const [customHeight, setCustomHeight] = useState(180);
-  const baselineArea = 260 * 180;
-  const dynamicPrice = useMemo(() => {
-    if (!catalogProduct) return 0;
-    if (usage === 'moto') return catalogProduct.basePrice;
-    const area = Math.max(1, customWidth * customHeight);
-    const factor = area / baselineArea;
-    const base = catalogProduct.basePrice;
-    return Math.max(1, Math.round(base * factor));
-  }, [catalogProduct, usage, customWidth, customHeight]);
   const openInCreator = () => {
     const cat = categoryKey || 'moto';
     window.location.href = `/search?category=${cat}&w=${customWidth}&h=${customHeight}`;
