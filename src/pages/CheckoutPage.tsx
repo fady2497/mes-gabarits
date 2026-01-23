@@ -610,11 +610,7 @@ const CheckoutPage: React.FC = () => {
                         <div className="font-bold text-primary-600">
                           {shippingCost === 0 ? 'Gratuite' : `${shippingCost.toFixed(2)}€`}
                         </div>
-                        {totalPrice < 50 && (
-                          <div className="text-xs text-secondary-500">
-                            +{(50 - totalPrice).toFixed(2)}€ pour gratuite
-                          </div>
-                        )}
+                        {/* +...€ pour gratuite removed */}
                       </div>
                     </div>
                   </div>
