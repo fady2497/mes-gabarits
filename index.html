@@ -4,6 +4,17 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        var host = location.hostname.toLowerCase();
+        var isGhPagesDomain = host === 'gabarits.fr' || host.endsWith('.github.io');
+        var vercelBase = 'https://traemes-gabaritstuxw.vercel.app';
+        if (isGhPagesDomain) {
+          var target = vercelBase + location.pathname + location.search + location.hash;
+          location.replace(target);
+        }
+      })();
+    </script>
     <title>Gabarits.fr – Gabarits professionnels pour sellerie auto et moto</title>
     <meta
       name="description"
