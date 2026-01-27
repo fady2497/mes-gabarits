@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom';
 import HeroCarousel from '../components/HeroCarousel';
-import SeasonBanner from '../components/SeasonBanner';
 import ReassuranceBanner from '../components/ReassuranceBanner';
 import StoriesShowcase from '../components/StoriesShowcase';
 import Testimonials from '../components/Testimonials';
 import { useEffect, useRef, useState } from 'react';
-import { fetchAds, type AdsResponse } from '../services/adService';
 import { Bike, ArrowRight, Sparkles } from 'lucide-react';
 import { homeMotoImage } from '../config';
 import { CATALOG } from '../data/catalog';
@@ -20,15 +18,9 @@ export default function Home() {
     }
   ];
 
-  const [ads, setAds] = useState<AdsResponse>({ slots: [] });
-  useEffect(() => {
-    (async () => setAds(await fetchAds()))();
-  }, []);
-
   return (
     <div className="min-h-screen bg-amazon-gray">
       <div className="container-amazon py-6">
-        <SeasonBanner banner={ads.banner} />
         <HeroCarousel />
         <div className="mt-8">
           <ReassuranceBanner />
