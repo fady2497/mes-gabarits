@@ -68,7 +68,21 @@ const KB: Record<string, string> = {
   goldwing:
     'Honda Goldwing: large touring → Hexagone 50–70 mm ou Chevron 50–70. Dosseret conforme au motif central. Privilégier confort et régularité du pas.',
   harley:
-    'Harley Davidson: style custom → Chevron (aligné/décalé) 40–70 mm ou Wave. Cuir lisse/perforé et surpiqûre épaisse conseillés.'
+    'Harley Davidson: style custom → Chevron (aligné/décalé) 40–70 mm ou Wave. Cuir lisse/perforé et surpiqûre épaisse conseillés.',
+  r_ninet:
+    'BMW R nineT: Hexagone 40–50 mm ou Chevron 40–50. Look néo‑rétro; privilégier surpiqûre contrastée et alcantara au centre.',
+  yamaha_mt:
+    'Yamaha MT: selle compacte → Hexagone 30–40 mm ou Line sport. Motif discret recommandé pour garder l’assise visuelle légère.',
+  multistrada:
+    'Ducati Multistrada: touring/sport → Hexagone 40–50 mm ou Curve/Wave 50 mm. Confort + régularité du pas.',
+  ktm_adventure:
+    'KTM Adventure: trail → Hexagone 40–50 mm ou Line sport. Surpiqûre orange contrastée fréquente.',
+  burgman: 'Suzuki Burgman: scooter confortable → Hexagone 40–50 mm ou Wave. Pas moyen conseillé.',
+  mp3: 'Piaggio MP3: scooter 3 roues → Hexagone 40 mm ou Line sport. Motif régulier adapté aux larges selles.',
+  catalogue:
+    'Catalogue Moto: ouvre la liste de gabarits. Vous pouvez filtrer par série (A→M) et prix.',
+  exemples: 'Exemples: galeries d’images de sellerie (hexagone, losange, chevron, etc.).',
+  calc_pas: 'Calcul du pas: entrez la largeur utile (cm) pour obtenir 30/40/50/70 mm conseillé.'
 };
 
 function buildPrompt() {
@@ -255,6 +269,18 @@ export default function SupportBot() {
     setInput('');
   };
 
+  const sendKey = async (key: string) => {
+    const label = key;
+    const preset = KB[key] || respondFallback(key);
+    const now = Date.now();
+    setMsgs((m) => [...m, { role: 'user', content: label, time: now }]);
+    if (preset) setMsgs((m) => [...m, { role: 'assistant', content: preset, time: now + 1 }]);
+    // Trigger actions
+    if (key === 'catalogue') window.location.href = catalogueUrl;
+    if (key === 'exemples') window.location.href = '/#exemples-stories';
+    if (key === 'calc_pas') setCalcOpen(true);
+  };
+
   const submitForm = () => {
     const spec = `Sur‑mesure demandé:\n• Modèle: ${form.modele}\n• Largeur: ${form.largeur} cm\n• Longueur: ${form.longueur} cm\n• Motif: ${form.motif}\n• Couleur surpiqûre: ${form.color}\n• Contact: ${form.contact}`;
     setMsgs((m) => [
@@ -336,10 +362,7 @@ export default function SupportBot() {
                     disabled={loading}
                     onClick={() => {
                       if (s.key === 'surmesure') setFormOpen(true);
-                      else if (s.key === 'catalogue') window.location.href = catalogueUrl;
-                      else if (s.key === 'exemples') window.location.href = '/#exemples-stories';
-                      else if (s.key === 'calc_pas') setCalcOpen(true);
-                      else send(s.label);
+                      else sendKey(s.key);
                     }}
                     className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/15 text-amber-200 hover:bg-amber-500/25"
                   >
@@ -457,7 +480,7 @@ export default function SupportBot() {
             >
               {msgs.length === 0 && (
                 <div className="text-sm text-amber-100">
-                  Posez une question (ex: livraison, motif, taille, sur‑mesure).
+                  Choisissez une question ci‑dessus pour obtenir une réponse.
                 </div>
               )}
               {msgs.map((m, i) => (
@@ -476,22 +499,6 @@ export default function SupportBot() {
               ))}
             </div>
             <div className="px-3 pb-3">
-              <div className="flex items-center gap-2">
-                <input
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={(e) => e.key === 'Enter' && !loading && send(input)}
-                  className="flex-1 bg-white/10 border border-amber-500/30 rounded-lg px-3 py-2 text-sm placeholder:text-white/50"
-                  placeholder="Votre question..."
-                />
-                <button
-                  className="px-3 py-2 rounded-lg bg-amber-600 text-white hover:bg-amber-500 disabled:opacity-60"
-                  disabled={loading}
-                  onClick={() => send(input)}
-                >
-                  <Send className="w-4 h-4" />
-                </button>
-              </div>
               {loading && (
                 <div className="mt-2 text-xs text-white/70">Rédaction de la réponse…</div>
               )}
