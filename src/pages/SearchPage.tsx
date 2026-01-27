@@ -137,13 +137,7 @@ export default function SearchPage() {
             </button>
           ))}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 w-full md:w-auto">
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Rechercher des gabarits"
-            className="input-amazon w-full"
-          />
+        <div className="w-full md:w-auto">
           <button
             className="btn-secondary"
             onClick={() => setSp({ category: currentCat, legacy: legacy ? undefined : '1' })}
