@@ -57,7 +57,6 @@ export default function StoriesShowcase({ images = [] as MediaItem[] }) {
         {/* Décoration d'arrière-plan */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-amber-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-50 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-orange-50 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2 opacity-50 pointer-events-none"></div>
-
         <div className="relative z-10">
           <div className="flex items-center justify-between mb-8">
             <div>

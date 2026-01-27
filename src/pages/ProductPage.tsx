@@ -112,21 +112,11 @@ const ProductPage: React.FC = () => {
     setMeta('property', 'og:description', desc);
     setMeta('property', 'og:url', url);
     setMeta('property', 'og:type', 'product');
-    setMeta(
-      'property',
-      'og:image',
-      product.images?.[0] ||
-        'https://gabarits.fr/images/gabarit-sellerie-serie-g1-special-nda-gabaritsfr.png'
-    );
+    setMeta('property', 'og:image', product.images?.[0] || 'https://gabarits.fr/images/gabarit-sellerie-serie-g1-special-nda-gabaritsfr.png');
     setMeta('name', 'twitter:card', 'summary_large_image');
     setMeta('name', 'twitter:title', `${product.name} | Gabarits.fr`);
     setMeta('name', 'twitter:description', desc);
-    setMeta(
-      'name',
-      'twitter:image',
-      product.images?.[0] ||
-        'https://gabarits.fr/images/gabarit-sellerie-serie-g1-special-nda-gabaritsfr.png'
-    );
+    setMeta('name', 'twitter:image', product.images?.[0] || 'https://gabarits.fr/images/gabarit-sellerie-serie-g1-special-nda-gabaritsfr.png');
     const price = dynamicPrice || product.price;
     setJsonLd({
       '@context': 'https://schema.org',

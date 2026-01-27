@@ -37,7 +37,9 @@ export default function FloatingDock() {
           : 'calc(env(safe-area-inset-bottom) + 16px)'
       }}
     >
-      <div className={`transition-all duration-200 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
+      <div
+        className={`transition-all duration-200 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
+      >
         <button
           onClick={openBot}
           aria-label="Aide"

@@ -17,7 +17,10 @@ export default function CampaignBar() {
           {b.subtitle ? ' — ' + b.subtitle : ''}
         </div>
         {b.ctaHref && b.ctaLabel && (
-          <Link to={b.ctaHref} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500 text-white text-sm hover:bg-orange-600 transition">
+          <Link
+            to={b.ctaHref}
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500 text-white text-sm hover:bg-orange-600 transition"
+          >
             {b.ctaLabel}
           </Link>
         )}

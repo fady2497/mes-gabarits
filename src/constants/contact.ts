@@ -4,8 +4,8 @@ export const CONTACT = {
   social: {
     facebook: 'https://www.facebook.com/GabArits',
     instagram: 'https://instagram.com/gabarits.fr',
-    linkedin: 'https://linkedin.com/',
-  },
-}
+    linkedin: 'https://linkedin.com/'
+  }
+};
 
-export const WHATSAPP_URL = `https://wa.me/${CONTACT.phone.replace(/[^\d]/g, '')}?text=${encodeURIComponent('Bonjour, j’ai une question sur la livraison')}`
+export const WHATSAPP_URL = `https://wa.me/${CONTACT.phone.replace(/[^\d]/g, '')}?text=${encodeURIComponent('Bonjour, j’ai une question sur la livraison')}`;

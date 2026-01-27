@@ -29,7 +29,7 @@ export default function SearchPage() {
   const [query, setQuery] = useState('');
   const [sp, setSp] = useSearchParams();
   const currentCat = sp.get('category') || 'moto';
-  
+ j  
   // SEO Dynamique simple
   React.useEffect(() => {
     document.title = `Catalogue ${currentCat === 'moto' ? 'Moto' : currentCat === 'auto' ? 'Auto' : ''} | Gabarits.fr`;
