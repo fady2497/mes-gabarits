@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="leather" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d0f12"/>
+      <stop offset="1" stop-color="#171a1f"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="512" height="512" rx="56" fill="url(#leather)"/>
+  <rect x="20" y="20" width="472" height="472" rx="48" fill="none" stroke="#7a532d" stroke-width="8"/>
+  <rect x="24" y="24" width="464" height="464" rx="44" fill="none" stroke="#2e2e2e" stroke-width="2" stroke-dasharray="2 6"/>
+  <text x="256" y="240" text-anchor="middle" font-size="160" font-family="" fill="#d4af37" font-weight="600">Gab</text>
+  <text x="256" y="340" text-anchor="middle" font-size="64" font-family="" fill="#d4af37" letter-spacing="3">SELLIER</text>
+</svg>
