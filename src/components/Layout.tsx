@@ -7,7 +7,6 @@ import { useCartStore } from '../store/index.tsx';
 import { Link, Outlet } from 'react-router-dom';
 // ContactBar removed from header; info moved to footer
 import FooterSimple from './FooterSimple';
-import CampaignBar from './CampaignBar';
 import { supabase } from '../lib/supabase';
 import { CONTACT } from '../constants/contact';
 
@@ -24,7 +23,6 @@ export default function Layout() {
   return (
     <div className="min-h-screen bg-amazon-gray">
       <header className="sticky top-0 z-40">
-        <CampaignBar />
         <div className="bg-white border-b border-orange-300">
           <div className="container-amazon flex items-center justify-between py-3">
             <Link to="/" className="font-extrabold text-lg brand">
